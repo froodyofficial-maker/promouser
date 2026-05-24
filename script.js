@@ -94,6 +94,25 @@
 })();
 
 
+/* ── ACTIVE LINK HIGHLIGHTING ── */
+(function () {
+  const currentPage = location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href') || '';
+    const isCurrent = href === currentPage || (currentPage === 'index.html' && href === 'index.html');
+
+    if (isCurrent) {
+      link.classList.add('active');
+      link.closest('li')?.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+})();
+
+
 /* ── SCROLL REVEAL ── */
 (function () {
   const targets = document.querySelectorAll('.reveal');

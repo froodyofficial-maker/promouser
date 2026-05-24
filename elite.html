@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProMouser Elite — ProMouser</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="announcement-bar" id="announcementBar">
+    <span>🎉 CPS Test Update! <strong>v2.0</strong> is now live —</span>
+    <a href="tests.html">Try it now</a>
+    <button class="close-banner" id="closeBanner" aria-label="Close">✕</button>
+  </div>
+
+  <!-- NAVIGATION -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        ProMouser
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li class="has-dropdown">
+          <a href="index.html">Home <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="mouse-ai.html">Mouse AI</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="image-gen.html">Image Generation <span class="badge">New</span></a></li>
+            <li><a href="elite.html">ProMouser Elite</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="mouses.html">Mouses <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="hand-grip.html">Hand Grip</a></li>
+            <li class="has-dropdown-nested">
+              <a href="mouse-tips.html">Mouse Tips <span class="chevron">▸</span></a>
+              <ul class="dropdown-nested">
+                <li><a href="minecraft-tips.html">Minecraft Tips</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="tests.html">Tests <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="cps-test.html">CPS Test</a></li>
+            <li><a href="double-click-test.html">Double Click Test</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="nav-search-btn" id="navSearchBtn" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="search" placeholder="Search ProMouser…" id="searchInput" autocomplete="off" />
+        <button id="closeSearch" aria-label="Close search">✕</button>
+      </div>
+    </div>
+  </header>
+
+
+  <main>
+    <section class="about-section" id="hero">
+      <div class="container about-grid">
+        <div class="about-text reveal">
+          <span class="section-label">ProMouser</span>
+          <h2>Level up your setup with deeper insights and premium guidance.</h2>
+          <p>ProMouser Elite brings together curated recommendations, higher-touch guidance, and a cleaner path to building the perfect setup.</p>
+          <div class="hero-cta">
+            <a href="mouses.html" class="btn btn-primary">Explore Mouses</a>
+            <a href="tests.html" class="btn btn-ghost">Check the tools</a>
+          </div>
+        </div>
+        <div class="about-cards reveal">
+          <div class="feature-card">
+            <div class="fc-icon">🎯</div>
+            <h4>Built for your setup</h4>
+            <p>Every page is tuned to help you choose the right mouse and improve your daily performance.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">⚡</div>
+            <h4>Fast and focused</h4>
+            <p>Clean navigation, lightweight pages, and practical guides that get to the point quickly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <div class="container about-grid">
+        <div class="about-text reveal">
+          <span class="section-label">Elite edition</span>
+          <h2>For players who want the full workflow</h2>
+          <p>Elite is built for people who want more than a quick recommendation. It combines hands-on advice, performance testing, and curated mouse pathways for serious gamers and power users.</p>
+          <p>If you want a more structured path from curiosity to purchase, this page is your roadmap.</p>
+        </div>
+        <div class="about-cards reveal">
+          <div class="feature-card">
+            <div class="fc-icon">🌟</div>
+            <h4>Curated picks</h4>
+            <p>Focused recommendations for serious players and performance-minded buyers.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🧪</div>
+            <h4>Advanced testing</h4>
+            <p>Use the performance tools to refine your setup and track changes over time.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🎯</div>
+            <h4>Practical guidance</h4>
+            <p>Get the route from recommendation to setup without the clutter.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">📣</div>
+            <h4>Community-first</h4>
+            <p>Stay connected to the latest reviews, ideas, and updates from the ProMouser channel.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-links">
+      <div class="container about-text reveal">
+        <span class="section-label">Ready to begin</span>
+        <h2>Start with the guides or the test hub</h2>
+        <p>The Elite path is simpler when you start with a clear understanding of your grip, your budget, and your main use case. Use that foundation to narrow down the best next mouse.</p>
+        <a href="mouse-ai.html" class="btn btn-outline">Try Mouse AI</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">⬡</span>
+        <strong>ProMouser</strong>
+        <p>The mouse guide built for gamers, by gamers.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Explore</h5>
+          <a href="mouses.html">Browse Mice</a>
+          <a href="hand-grip.html">Hand Grip</a>
+          <a href="mouse-tips.html">Mouse Tips</a>
+          <a href="minecraft-tips.html">Minecraft Tips</a>
+        </div>
+        <div class="footer-col">
+          <h5>Tools</h5>
+          <a href="cps-test.html">CPS Test</a>
+          <a href="double-click-test.html">Double Click Test</a>
+          <a href="mouse-ai.html">Mouse AI</a>
+          <a href="image-gen.html">Image Generator</a>
+        </div>
+        <div class="footer-col">
+          <h5>About</h5>
+          <a href="about.html">About Us</a>
+          <a href="elite.html">ProMouser Elite</a>
+          <a href="https://www.youtube.com/@ProMouser" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 ProMouser · Built with 🖱️</p>
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

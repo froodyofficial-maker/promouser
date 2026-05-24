@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tests — ProMouser</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="announcement-bar" id="announcementBar">
+    <span>🎉 CPS Test Update! <strong>v2.0</strong> is now live —</span>
+    <a href="tests.html">Try it now</a>
+    <button class="close-banner" id="closeBanner" aria-label="Close">✕</button>
+  </div>
+
+  <!-- NAVIGATION -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        ProMouser
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li class="has-dropdown">
+          <a href="index.html">Home <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="mouse-ai.html">Mouse AI</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="image-gen.html">Image Generation <span class="badge">New</span></a></li>
+            <li><a href="elite.html">ProMouser Elite</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="mouses.html">Mouses <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="hand-grip.html">Hand Grip</a></li>
+            <li class="has-dropdown-nested">
+              <a href="mouse-tips.html">Mouse Tips <span class="chevron">▸</span></a>
+              <ul class="dropdown-nested">
+                <li><a href="minecraft-tips.html">Minecraft Tips</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="tests.html">Tests <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="cps-test.html">CPS Test</a></li>
+            <li><a href="double-click-test.html">Double Click Test</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="nav-search-btn" id="navSearchBtn" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="search" placeholder="Search ProMouser…" id="searchInput" autocomplete="off" />
+        <button id="closeSearch" aria-label="Close search">✕</button>
+      </div>
+    </div>
+  </header>
+
+
+  <main>
+    <section class="about-section" id="hero">
+      <div class="container about-grid">
+        <div class="about-text reveal">
+          <span class="section-label">ProMouser</span>
+          <h2>Check your click performance and compare your setup.</h2>
+          <p>ProMouser includes a simple test hub so you can measure speed, discover weak spots, and build a more consistent routine.</p>
+          <div class="hero-cta">
+            <a href="mouses.html" class="btn btn-primary">Explore Mouses</a>
+            <a href="tests.html" class="btn btn-ghost">Check the tools</a>
+          </div>
+        </div>
+        <div class="about-cards reveal">
+          <div class="feature-card">
+            <div class="fc-icon">🎯</div>
+            <h4>Built for your setup</h4>
+            <p>Every page is tuned to help you choose the right mouse and improve your daily performance.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">⚡</div>
+            <h4>Fast and focused</h4>
+            <p>Clean navigation, lightweight pages, and practical guides that get to the point quickly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Test hub</span>
+          <h2>Two quick ways to measure performance</h2>
+        </div>
+        <div class="about-cards reveal">
+          <div class="feature-card">
+            <div class="fc-icon">⚡</div>
+            <h4>CPS Test</h4>
+            <p>Measure clicks per second and track your consistency over a short session.</p>
+            <a href="cps-test.html" class="btn btn-primary">Open CPS Test</a>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🖱️</div>
+            <h4>Double Click Test</h4>
+            <p>Check how quickly your mouse and hand can repeat a double click reliably.</p>
+            <a href="double-click-test.html" class="btn btn-outline">Open Double Click</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-links">
+      <div class="container about-text reveal">
+        <span class="section-label">How to use it</span>
+        <h2>Start with a repeatable routine</h2>
+        <p>Warm up, keep your hand relaxed, and use the same surface every time. If you want better consistency, pair the tests with a grip and mouse setup review first.</p>
+        <a href="mouses.html" class="btn btn-outline">Browse mice again</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">⬡</span>
+        <strong>ProMouser</strong>
+        <p>The mouse guide built for gamers, by gamers.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Explore</h5>
+          <a href="mouses.html">Browse Mice</a>
+          <a href="hand-grip.html">Hand Grip</a>
+          <a href="mouse-tips.html">Mouse Tips</a>
+          <a href="minecraft-tips.html">Minecraft Tips</a>
+        </div>
+        <div class="footer-col">
+          <h5>Tools</h5>
+          <a href="cps-test.html">CPS Test</a>
+          <a href="double-click-test.html">Double Click Test</a>
+          <a href="mouse-ai.html">Mouse AI</a>
+          <a href="image-gen.html">Image Generator</a>
+        </div>
+        <div class="footer-col">
+          <h5>About</h5>
+          <a href="about.html">About Us</a>
+          <a href="elite.html">ProMouser Elite</a>
+          <a href="https://www.youtube.com/@ProMouser" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 ProMouser · Built with 🖱️</p>
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
