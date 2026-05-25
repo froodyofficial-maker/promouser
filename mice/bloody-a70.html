@@ -4,21 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="../assets/icons/favicon.png" type="image/png" />
-  <title>Razer DeathAdder V3 — ProMouser</title>
+  <title>Bloody A70 — ProMouser</title>
   <link rel="stylesheet" href="../style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="announcement-bar" id="announcementBar">
-      <span>CPS Test Update: <strong>v2.0</strong> is now live —</span>
-      <a href="../tests.html">Try it now</a>
-      <button class="close-banner" id="closeBanner" aria-label="Close"></button>
+    <span>CPS Test Update: <strong>v2.0</strong> is now live —</span>
+    <a href="../tests.html">Try it now</a>
+    <button class="close-banner" id="closeBanner" aria-label="Close">✕</button>
+  </div>
 
   <header class="site-header" id="siteHeader">
     <nav class="nav-container">
       <a href="../index.html" class="nav-logo">
-        <span class="logo-icon"></span>
+        <span class="logo-icon">⬡</span>
         ProMouser
       </a>
 
@@ -26,14 +27,14 @@
         <li class="has-dropdown">
           <a href="../index.html">Home <span class="chevron">▾</span></a>
           <ul class="dropdown">
-            <li><a href="../mouse-ai.html">Mouse AI</a></li>
+            <li><a href="../mouse-ai.html">Recommendation Assistant</a></li>
             <li><a href="../about.html">About Us</a></li>
             <li><a href="../image-gen.html">Image Generation <span class="badge">New</span></a></li>
             <li><a href="../elite.html">ProMouser Elite</a></li>
           </ul>
         </li>
         <li class="has-dropdown">
-          <a href="../mouses.html" class="active">Mouses <span class="chevron">▾</span></a>
+          <a href="../mice.html" class="active">Mice <span class="chevron">▾</span></a>
           <ul class="dropdown">
             <li><a href="../hand-grip.html">Hand Grip</a></li>
             <li class="has-dropdown-nested">
@@ -67,7 +68,7 @@
       <div class="search-box">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         <input type="search" placeholder="Search ProMouser…" id="searchInput" autocomplete="off" />
-        <button id="closeSearch" aria-label="Close search"></button>
+        <button id="closeSearch" aria-label="Close search">✕</button>
       </div>
     </div>
   </header>
@@ -76,28 +77,40 @@
     <section class="about-section" id="hero">
       <div class="container about-grid">
         <div class="about-text reveal">
-          <span class="section-label">Razer DeathAdder V3</span>
-          <h2>A lightweight FPS mouse built for <em>speed and precision</em>.</h2>
-          <p>The Razer DeathAdder V3 is perfect for First Person Shooters with its light weight and extra precise tracking, not to mention the huge jump in polling rate. Whether you play Valorant, CS2, or any other fast-paced shooter, this mouse keeps up.</p>
+          <span class="section-label">Bloody A70</span>
+          <h2>A click-focused mouse that prioritizes responsiveness and a direct, no-frills feel.</h2>
+          <p>The Bloody A70 is commonly chosen by players who care most about button response and consistent clicking. It can be a practical choice for Minecraft-focused play, but comfort and long-session usability depend heavily on hand size and grip.</p>
           <div class="mouse-hero-image">
-            <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUB-he2PlUXRkDfYuLY6dYT7mAVDUpCHEjldRogYXZ4Jmt37cEY097hm0TOYHryW7RoBCYmusJ5o03x52k-GY2UxPg1ksYMT9nkPOEcZQs7UMtfGIeMkzq6Lrl3bDlucb4tBHWBSylNxtngf9B__16z-cvdxTl-9k73F6bZcDde8mOxNbyt3CWevtIrhZDJDh_YDoXUOde_Zg3k0IjFbr1FBCgrPQ-rM28FRBVY=w1280" alt="Razer DeathAdder V3" loading="lazy" />
+            <picture>
+              <source
+                type="image/webp"
+                srcset="../assets/images/mice/bloody-a70-480.webp 480w, ../assets/images/mice/bloody-a70-720.webp 720w, ../assets/images/mice/bloody-a70-960.webp 960w, ../assets/images/mice/bloody-a70-1280.webp 1280w"
+                sizes="(max-width: 900px) 100vw, 520px"
+              />
+              <img
+                src="../assets/images/mice/bloody-a70.jpg"
+                alt="Bloody A70"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </div>
           <div class="hero-cta">
-            <a href="first-person-shooters.html" class="btn btn-primary">Back to FPS Mouses</a>
-            <a href="../mouses.html" class="btn btn-ghost">Browse all mouses</a>
+            <a href="minecraft.html" class="btn btn-primary">Back to Minecraft Mice</a>
+            <a href="../mice.html" class="btn btn-ghost">Browse all mice</a>
           </div>
         </div>
 
         <div class="about-cards reveal">
           <div class="feature-card">
             <div class="fc-icon" data-icon="Click"></div>
-            <h4>Great for all clicking styles</h4>
-            <p>Works well for butterfly, jitter, and drag clicking, making it a flexible pick for both FPS and Minecraft.</p>
+            <h4>Click response</h4>
+            <p>A direct click feel that suits fast, repeated input in Minecraft-focused play.</p>
           </div>
           <div class="feature-card">
-            <div class="fc-icon" data-icon="Light"></div>
-            <h4>59g lightweight build</h4>
-            <p>Light enough to reduce hand fatigue during long sessions without sacrificing control or stability.</p>
+            <div class="fc-icon" data-icon="Fit"></div>
+            <h4>Shape matters</h4>
+            <p>Best results come from matching the shape to your grip and avoiding strain in long sessions.</p>
           </div>
         </div>
       </div>
@@ -106,29 +119,31 @@
     <section class="about-section">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-label">Why it stands out</span>
-          <h2>What makes the DeathAdder V3 worth considering</h2>
+          <span class="section-label">Quick facts</span>
+          <h2>What to evaluate before buying</h2>
+          <p>Focus on comfort, click feel, and real-world reliability before committing.</p>
         </div>
+
         <div class="about-cards reveal">
           <div class="feature-card">
-            <div class="fc-icon" data-icon="Track"></div>
-            <h4>750+ IPS tracking</h4>
-            <p>Handles rapid swipes and fast aim changes without skipping or jittering, even at high sensitivity.</p>
+            <div class="fc-icon" data-icon="Fit"></div>
+            <h4>Comfort</h4>
+            <p>Test whether the body width and button placement feel natural for your grip.</p>
           </div>
           <div class="feature-card">
-            <div class="fc-icon" data-icon="Poll"></div>
-            <h4>8000Hz polling rate</h4>
-            <p>Near-zero input lag that keeps your aim locked in even during the fastest movements.</p>
+            <div class="fc-icon" data-icon="Care"></div>
+            <h4>Consistency</h4>
+            <p>Prioritize stable tracking and predictable clicks over extreme specs on paper.</p>
           </div>
           <div class="feature-card">
-       
-            <h4>Up to 6400 DPI</h4>
-            <p>Adjustable sensitivity that covers low-sens sniping all the way to high-sens tracking play styles.</p>
+            <div class="fc-icon" data-icon="Setup"></div>
+            <h4>Settings</h4>
+            <p>Use a simple DPI and sensitivity setup, then refine only after you feel comfortable.</p>
           </div>
           <div class="feature-card">
-        
-            <h4>6 programmable buttons</h4>
-            <p>Fully customizable via the official Razer Synapse app for weapon swaps, macros, and more.</p>
+            <div class="fc-icon" data-icon="Guide"></div>
+            <h4>Next steps</h4>
+            <p>Use the CPS test and mouse tips pages to validate your setup.</p>
           </div>
         </div>
       </div>
@@ -138,47 +153,23 @@
       <div class="container">
         <div class="section-header reveal">
           <span class="section-label">ProMouser take</span>
-          <h2>What we noticed about this mouse</h2>
+          <h2>Who it fits best</h2>
         </div>
         <div class="about-cards reveal">
           <div class="feature-card">
-        
-            <h4>Best for FPS and fast clicking</h4>
-            <p>The lightweight build and high polling rate make it feel snappy and responsive in every game type. It is a strong everyday pick.</p>
+            <div class="fc-icon" data-icon="Pro"></div>
+            <h4>Good fit if</h4>
+            <p>You want a click-focused mouse and you prefer straightforward hardware without a complicated workflow.</p>
           </div>
           <div class="feature-card">
-        
-            <h4>Customizable RGB</h4>
-            <p>Per-zone lighting control through Razer Synapse lets you match your setup without adding bulk or weight.</p>
+            <div class="fc-icon" data-icon="Warn"></div>
+            <h4>Consider alternatives if</h4>
+            <p>You need maximum comfort for long sessions or you prefer lighter builds and simpler shapes.</p>
           </div>
           <div class="feature-card">
-       
-            <h4>Our rating</h4>
-            <p>For players who want a fast, precise, and comfortable FPS mouse at a fair price, this is a top pick. Our overall takeaway is 9/10.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="about-section">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-label">Where to buy</span>
-          <h2>Trusted buying options</h2>
-          <p>These links are included so you can compare pricing and availability quickly.</p>
-        </div>
-        <div class="about-cards reveal">
-          <div class="feature-card">
-
-            <h4>Amazon.in</h4>
-            <p>Offer price: <strong>₹3,800</strong></p>
-            <a href="https://www.amazon.in/s?k=razer+deathadder+v3" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View on Amazon</a>
-          </div>
-          <div class="feature-card">
-      
-            <h4>Official app</h4>
-            <p>Customize DPI, polling rate, lighting, and button bindings via Razer's official software.</p>
-            <a href="https://www.razer.com/synapse-3" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Open Razer Synapse</a>
+            <div class="fc-icon" data-icon="Verdict"></div>
+            <h4>Verdict</h4>
+            <p>A practical option for Minecraft-focused play when the shape fits your hand. Confirm comfort first, then optimize your settings.</p>
           </div>
         </div>
       </div>
@@ -188,14 +179,14 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="logo-icon"></span>
+        <span class="logo-icon">⬡</span>
         <strong>ProMouser</strong>
-        <p>The mouse guide built for gamers, by gamers.</p>
+        <p>A focused mouse guide with practical tools and recommendations.</p>
       </div>
       <div class="footer-links">
         <div class="footer-col">
           <h5>Explore</h5>
-          <a href="../mouses.html">Browse Mice</a>
+          <a href="../mice.html">Browse Mice</a>
           <a href="../hand-grip.html">Hand Grip</a>
           <a href="../mouse-tips.html">Mouse Tips</a>
           <a href="../minecraft-tips.html">Minecraft Tips</a>
@@ -204,7 +195,7 @@
           <h5>Tools</h5>
           <a href="../cps-test.html">CPS Test</a>
           <a href="../double-click-test.html">Double Click Test</a>
-          <a href="../mouse-ai.html">Mouse AI</a>
+          <a href="../mouse-ai.html">Recommendation Assistant</a>
           <a href="../image-gen.html">Image Generator</a>
         </div>
         <div class="footer-col">

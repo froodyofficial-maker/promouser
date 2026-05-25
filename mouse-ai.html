@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="assets/icons/favicon.png" type="image/png" />
-  <title>Mouse AI — ProMouser</title>
+  <title>Recommendation Assistant — ProMouser</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
@@ -28,14 +28,14 @@
         <li class="has-dropdown">
           <a href="index.html">Home <span class="chevron">▾</span></a>
           <ul class="dropdown">
-            <li><a href="mouse-ai.html">Mouse AI</a></li>
+            <li><a href="mouse-ai.html">Recommendation Assistant</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="image-gen.html">Image Generation <span class="badge">New</span></a></li>
             <li><a href="elite.html">ProMouser Elite</a></li>
           </ul>
         </li>
         <li class="has-dropdown">
-          <a href="mouses.html">Mouses <span class="chevron">▾</span></a>
+          <a href="mice.html">Mice <span class="chevron">▾</span></a>
           <ul class="dropdown">
             <li><a href="hand-grip.html">Hand Grip</a></li>
             <li class="has-dropdown-nested">
@@ -81,9 +81,9 @@
         <div class="about-text reveal">
           <span class="section-label">ProMouser</span>
           <h2>Get a personalized recommendation in seconds.</h2>
-          <p>Mouse AI helps you narrow your search by grip, budget, and game type so you can focus on the mice that are most likely to work for you.</p>
+          <p>Recommendation Assistant helps you narrow your search by grip, budget, and game type so you can focus on the mice that are most likely to work for you.</p>
           <div class="hero-cta">
-            <a href="mouses.html" class="btn btn-primary">Explore Mouses</a>
+            <a href="mice.html" class="btn btn-primary">Explore Mice</a>
             <a href="tests.html" class="btn btn-ghost">Check the tools</a>
           </div>
         </div>
@@ -135,6 +135,54 @@
       </div>
     </section>
 
+    <section class="about-section" id="assistant">
+      <div class="container section-header reveal">
+        <span class="section-label">Recommendation assistant</span>
+        <h2>Get a short, practical recommendation</h2>
+        <p>Describe your grip, budget, and main games. This tool provides a starting shortlist and the next pages to review.</p>
+      </div>
+
+      <div class="container assistant-grid">
+        <div class="assistant-card reveal">
+          <form class="assistant-form" id="assistantForm">
+            <div class="assistant-row">
+              <label for="assistantGrip">Grip</label>
+              <select id="assistantGrip" required>
+                <option value="" selected disabled>Select</option>
+                <option value="palm">Palm</option>
+                <option value="claw">Claw</option>
+                <option value="fingertip">Fingertip</option>
+                <option value="unsure">Not sure</option>
+              </select>
+            </div>
+            <div class="assistant-row">
+              <label for="assistantBudget">Budget</label>
+              <select id="assistantBudget" required>
+                <option value="" selected disabled>Select</option>
+                <option value="budget">Budget</option>
+                <option value="mid">Mid-range</option>
+                <option value="premium">Premium</option>
+              </select>
+            </div>
+            <div class="assistant-row">
+              <label for="assistantGames">Main use</label>
+              <select id="assistantGames" required>
+                <option value="" selected disabled>Select</option>
+                <option value="fps">FPS</option>
+                <option value="minecraft">Minecraft</option>
+                <option value="mixed">Mixed</option>
+                <option value="work">Work and productivity</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" type="submit">Generate recommendation</button>
+          </form>
+
+          <div class="assistant-results" id="assistantResults" aria-live="polite"></div>
+          <p class="assistant-note">This is a lightweight on-page tool. If you want a live chat assistant, connect an API endpoint and we can wire it in.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="quick-links">
       <div class="container about-text reveal">
         <span class="section-label">Recommended next move</span>
@@ -156,7 +204,7 @@
       <div class="footer-links">
         <div class="footer-col">
           <h5>Explore</h5>
-          <a href="mouses.html">Browse Mice</a>
+          <a href="mice.html">Browse Mice</a>
           <a href="hand-grip.html">Hand Grip</a>
           <a href="mouse-tips.html">Mouse Tips</a>
           <a href="minecraft-tips.html">Minecraft Tips</a>
@@ -165,7 +213,7 @@
           <h5>Tools</h5>
           <a href="cps-test.html">CPS Test</a>
           <a href="double-click-test.html">Double Click Test</a>
-          <a href="mouse-ai.html">Mouse AI</a>
+          <a href="mouse-ai.html">Recommendation Assistant</a>
           <a href="image-gen.html">Image Generator</a>
         </div>
         <div class="footer-col">
@@ -181,6 +229,58 @@
     </div>
   </footer>
 
+  <script>
+    (function () {
+      const form = document.getElementById('assistantForm');
+      const results = document.getElementById('assistantResults');
+      if (!form || !results) return;
+
+      function buildRecommendation({ grip, budget, games }) {
+        const picks = [];
+        if (games === 'minecraft') picks.push('Start with the Minecraft mice list and prioritize consistent clicks and comfort.');
+        if (games === 'fps') picks.push('Start with the FPS mice list and prioritize weight, shape, and sensor performance.');
+        if (games === 'work') picks.push('Prioritize comfort, reliability, and a shape you can use for long sessions.');
+        if (games === 'mixed') picks.push('Choose a balanced shape and weight before optimizing for a single game.');
+
+        if (grip === 'unsure') picks.push('Use the hand-grip guide first to confirm which grip feels natural.');
+        else picks.push(`Focus on shapes that suit a ${grip} grip.`);
+
+        if (budget === 'budget') picks.push('Shortlist value-focused models and avoid paying for features you will not use.');
+        if (budget === 'mid') picks.push('Look for proven sensors and solid build quality without premium add-ons.');
+        if (budget === 'premium') picks.push('Prioritize top-tier sensors, low weight, and long-term comfort.');
+
+        const links = [
+          { href: 'mice.html', label: 'Browse mice' },
+          { href: 'hand-grip.html', label: 'Hand grip guide' },
+          { href: 'mouse-tips.html', label: 'Mouse tips' },
+          { href: 'tests.html', label: 'Tools and tests' },
+        ];
+        if (games === 'minecraft') links.unshift({ href: 'mice/minecraft.html', label: 'Minecraft mice' });
+        if (games === 'fps') links.unshift({ href: 'mice/first-person-shooters.html', label: 'FPS mice' });
+
+        return { picks, links };
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const grip = document.getElementById('assistantGrip').value;
+        const budget = document.getElementById('assistantBudget').value;
+        const games = document.getElementById('assistantGames').value;
+        const { picks, links } = buildRecommendation({ grip, budget, games });
+
+        results.innerHTML = `
+          <div class="assistant-results-inner">
+            <h3>Recommendation</h3>
+            <ul>${picks.map((p) => `<li>${p}</li>`).join('')}</ul>
+            <h3>Next pages</h3>
+            <div class="assistant-links">
+              ${links.map((l) => `<a class="btn btn-outline" href="${l.href}">${l.label}</a>`).join('')}
+            </div>
+          </div>
+        `;
+      });
+    })();
+  </script>
 
   <script src="script.js"></script>
 </body>

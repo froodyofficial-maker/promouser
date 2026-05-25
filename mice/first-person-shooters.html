@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-US" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../assets/icons/favicon.png" type="image/png" />
+  <title>FPS Mice — ProMouser</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="announcement-bar" id="announcementBar">
+    <span>CPS Test Update: <strong>v2.0</strong> is now live —</span>
+    <a href="../tests.html">Try it now</a>
+    <button class="close-banner" id="closeBanner" aria-label="Close">✕</button>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        ProMouser
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li class="has-dropdown">
+          <a href="../index.html">Home <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="../mouse-ai.html">Recommendation Assistant</a></li>
+            <li><a href="../about.html">About Us</a></li>
+            <li><a href="../image-gen.html">Image Generation <span class="badge">New</span></a></li>
+            <li><a href="../elite.html">ProMouser Elite</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="../mice.html" class="active">Mice <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="../hand-grip.html">Hand Grip</a></li>
+            <li class="has-dropdown-nested">
+              <a href="../mouse-tips.html">Mouse Tips <span class="chevron">▸</span></a>
+              <ul class="dropdown-nested">
+                <li><a href="../minecraft-tips.html">Minecraft Tips</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="../tests.html">Tests <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="../cps-test.html">CPS Test</a></li>
+            <li><a href="../double-click-test.html">Double Click Test</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="nav-search-btn" id="navSearchBtn" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="search" placeholder="Search ProMouser…" id="searchInput" autocomplete="off" />
+        <button id="closeSearch" aria-label="Close search">✕</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="about-section" id="hero">
+      <div class="container about-grid">
+        <div class="about-text reveal">
+          <span class="section-label">FPS Mice</span>
+          <h2>Built for fast aim, clean tracking, and quick reactions.</h2>
+          <p>For games like Valorant, Roblox Rivals, Team Fortress 2, and Fortnite, the best FPS mice are the ones that feel fast, precise, and stable in your hand. This page gathers the best-fitting picks and keeps the focus on what matters most: control and comfort.</p>
+
+          <div class="mouse-hero-image">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="../assets/images/mice/razer-deathadder-v3-480.webp 480w, ../assets/images/mice/razer-deathadder-v3-720.webp 720w, ../assets/images/mice/razer-deathadder-v3-960.webp 960w, ../assets/images/mice/razer-deathadder-v3-1280.webp 1280w"
+                sizes="(max-width: 900px) 100vw, 520px"
+              />
+              <img
+                src="../assets/images/mice/razer-deathadder-v3.jpg"
+                alt="Razer DeathAdder V3"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          </div>
+
+          <div class="hero-cta">
+            <a href="../mice.html" class="btn btn-primary">Browse all mice</a>
+            <a href="minecraft.html" class="btn btn-ghost">Explore Minecraft mice</a>
+          </div>
+        </div>
+
+        <div class="about-cards reveal">
+          <div class="feature-card">
+            
+            <h4>Fast sensor response</h4>
+            <p>Good FPS mice should feel immediately responsive and keep your aim consistent when the action gets intense.</p>
+          </div>
+          <div class="feature-card">
+            
+            <h4>Grip-friendly shape</h4>
+            <p>Whether you use a palm, claw, or fingertip grip, the right mouse shape will reduce strain and improve control.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Recommended picks</span>
+          <h2>Best FPS mice right now</h2>
+          <p>Picks focused on low latency, precise tracking, and comfort for competitive play.</p>
+        </div>
+
+        <div class="about-cards reveal">
+          <a href="razer-deathadder-v3.html" class="feature-card" style="text-decoration:none; color:inherit;">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="../assets/images/mice/razer-deathadder-v3-480.webp 480w, ../assets/images/mice/razer-deathadder-v3-720.webp 720w, ../assets/images/mice/razer-deathadder-v3-960.webp 960w, ../assets/images/mice/razer-deathadder-v3-1280.webp 1280w"
+                sizes="(max-width: 900px) 100vw, 360px"
+              />
+              <img
+                src="../assets/images/mice/razer-deathadder-v3.jpg"
+                alt="Razer DeathAdder V3"
+                class="feature-card-image"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            
+            <h4>Razer DeathAdder V3</h4>
+            <p><strong>Best for:</strong> fast FPS aim, butterfly and drag clicking.<br /><strong>Why it works:</strong> 59g weight, 750+ IPS tracking, and 8000Hz polling for near-zero latency.<br /><strong>Open page →</strong></p>
+          </a>
+          <a href="logitech-superlight-pro-x.html" class="feature-card" style="text-decoration:none; color:inherit;">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="../assets/images/mice/logitech-superlight-pro-x-480.webp 480w, ../assets/images/mice/logitech-superlight-pro-x-720.webp 720w, ../assets/images/mice/logitech-superlight-pro-x-960.webp 960w, ../assets/images/mice/logitech-superlight-pro-x-1280.webp 1280w"
+                sizes="(max-width: 900px) 100vw, 360px"
+              />
+              <img
+                src="../assets/images/mice/logitech-superlight-pro-x.jpg"
+                alt="Logitech Superlight Pro X"
+                class="feature-card-image"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <h4>Logitech Superlight Pro X</h4>
+            <p><strong>Best for:</strong> low-friction aim and long competitive sessions.<br /><strong>Why it works:</strong> lightweight feel with consistent tracking and simple day-to-day handling.<br /><strong>Open page →</strong></p>
+          </a>
+          <a href="razer-cobra.html" class="feature-card" style="text-decoration:none; color:inherit;">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="../assets/images/mice/razer-cobra-480.webp 480w, ../assets/images/mice/razer-cobra-720.webp 720w, ../assets/images/mice/razer-cobra-960.webp 960w, ../assets/images/mice/razer-cobra-1280.webp 1280w"
+                sizes="(max-width: 900px) 100vw, 360px"
+              />
+              <img
+                src="../assets/images/mice/razer-cobra.jpg"
+                alt="Razer Cobra"
+                class="feature-card-image"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <h4>Razer Cobra</h4>
+            <p><strong>Best for:</strong> value-focused FPS play with a dependable feel.<br /><strong>Why it works:</strong> consistent tracking and a straightforward setup that supports stable aim practice.<br /><strong>Open page →</strong></p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Quick comparison</span>
+          <h2>Which FPS mouse fits your setup?</h2>
+          <p>Use this quick breakdown to decide whether you want a budget option, a balanced everyday pick, or a premium feel.</p>
+        </div>
+
+        <div class="about-cards reveal">
+          <div class="feature-card">
+            
+            <h4>Budget pick</h4>
+            <p><strong>Razer DeathAdder V3</strong> gives you a strong mix of speed, comfort, and value for everyday FPS sessions.</p>
+            <p>Best if you want one reliable mouse without spending too much.</p>
+          </div>
+          <div class="feature-card">
+            
+            <h4>Balanced pick</h4>
+            <p>A comfortable shape, fast response, and a simple sensor profile make this a good option for both casual and serious matches.</p>
+            <p>Best if you want something easy to trust in every round.</p>
+          </div>
+          <div class="feature-card">
+            
+            <h4>Premium feel</h4>
+            <p>If you want a more refined feel, look for lighter builds and smoother clicks, especially if you play long sessions.</p>
+            <p>Best if you care more about polish and comfort over time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-links">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">ProMouser note</span>
+          <h2>What to look for in an FPS mouse</h2>
+        </div>
+
+        <div class="about-cards reveal">
+          <div class="feature-card">
+            
+            <h4>Sensor quality</h4>
+            <p>High tracking accuracy and stable sensor performance help you stay consistent from the first shot to the final round.</p>
+          </div>
+          <div class="feature-card">
+          
+            <h4>Low latency feel</h4>
+            <p>Fast click response and a clean sensor feel make a real difference in tight FPS situations.</p>
+          </div>
+          <div class="feature-card">
+
+            <h4>Comfort over time</h4>
+            <p>A mouse that fits your grip and feels comfortable during long sessions will support better performance in the long run.</p>
+          </div>
+          <div class="feature-card">
+
+            <h4>Simple comparisons</h4>
+            <p>Once you know the playstyle, it becomes much easier to compare sensor, weight, and grip fit without getting lost in specs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">⬡</span>
+        <strong>ProMouser</strong>
+        <p>The mouse guide built for gamers, by gamers.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Explore</h5>
+          <a href="../mice.html">Browse Mice</a>
+          <a href="../hand-grip.html">Hand Grip</a>
+          <a href="../mouse-tips.html">Mouse Tips</a>
+          <a href="../minecraft-tips.html">Minecraft Tips</a>
+        </div>
+        <div class="footer-col">
+          <h5>Tools</h5>
+          <a href="../cps-test.html">CPS Test</a>
+          <a href="../double-click-test.html">Double Click Test</a>
+          <a href="../mouse-ai.html">Recommendation Assistant</a>
+          <a href="../image-gen.html">Image Generator</a>
+        </div>
+        <div class="footer-col">
+          <h5>About</h5>
+          <a href="../about.html">About Us</a>
+          <a href="../elite.html">ProMouser Elite</a>
+          <a href="https://www.youtube.com/@ProMouser" target="_blank" rel="noopener noreferrer">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 ProMouser</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

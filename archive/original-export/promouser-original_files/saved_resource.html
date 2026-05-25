@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://ramukvaraa-dev.github.io/mouse-ai/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mouse AI</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: transparent;
+}
+
+#chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+#toggle-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+#chat-box {
+  display: none;
+  width: 320px;
+  height: 450px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  overflow: hidden;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.header {
+  background: #2563eb;
+  color: white;
+  padding: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#chat {
+  height: 320px;
+  overflow-y: auto;
+  padding: 10px;
+  background: #f3f4f6;
+}
+
+.input-area {
+  display: flex;
+  padding: 10px;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+}
+
+button.send {
+  margin-left: 8px;
+  padding: 10px;
+}
+</style>
+</head>
+<body>
+
+<div id="chat-widget">
+  <div id="chat-box">
+    <div class="header">Mouse Assistant</div>
+    <div id="chat"></div>
+
+    <div class="input-area">
+      <input id="msg" placeholder="Ask Mouse AI...">
+      <button class="send" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <button id="toggle-btn" onclick="toggleChat()" aria-label="Open chat">Chat</button>
+</div>
+
+<script>
+function toggleChat() {
+  const box = document.getElementById("chat-box");
+  box.style.display = box.style.display === "flex" ? "none" : "flex";
+}
+
+async function sendMessage() {
+  const input = document.getElementById("msg");
+  const msg = input.value;
+  if (!msg) return;
+
+  document.getElementById("chat").innerHTML += `<p><b>You:</b> ${msg}</p>`;
+  input.value = "";
+
+  const res = await fetch("https://YOUR-BACKEND.onrender.com/chat", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({message: msg})
+  });
+
+  const data = await res.json();
+  const reply = data.choices?.[0]?.message?.content || "No reply";
+
+  document.getElementById("chat").innerHTML += `<p><b>AI:</b> ${reply}</p>`;
+}
+</script>
+
+
+
+</body></html>
