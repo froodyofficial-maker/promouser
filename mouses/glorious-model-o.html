@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../assets/icons/favicon.png" type="image/png" />
+  <title>Glorious Model O — ProMouser</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="announcement-bar" id="announcementBar">
+    <span>🎉 CPS Test Update! <strong>v2.0</strong> is now live —</span>
+    <a href="../tests.html">Try it now</a>
+    <button class="close-banner" id="closeBanner" aria-label="Close">✕</button>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        ProMouser
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li class="has-dropdown">
+          <a href="../index.html">Home <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="../mouse-ai.html">Mouse AI</a></li>
+            <li><a href="../about.html">About Us</a></li>
+            <li><a href="../image-gen.html">Image Generation <span class="badge">New</span></a></li>
+            <li><a href="../elite.html">ProMouser Elite</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="../mouses.html" class="active">Mouses <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="../hand-grip.html">Hand Grip</a></li>
+            <li class="has-dropdown-nested">
+              <a href="../mouse-tips.html">Mouse Tips <span class="chevron">▸</span></a>
+              <ul class="dropdown-nested">
+                <li><a href="../minecraft-tips.html">Minecraft Tips</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="../tests.html">Tests <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="../cps-test.html">CPS Test</a></li>
+            <li><a href="../double-click-test.html">Double Click Test</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="nav-search-btn" id="navSearchBtn" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="search" placeholder="Search ProMouser…" id="searchInput" autocomplete="off" />
+        <button id="closeSearch" aria-label="Close search">✕</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="about-section" id="hero">
+      <div class="container about-grid">
+        <div class="about-text reveal">
+          <span class="section-label">Glorious Model O</span>
+          <h2>A Minecraft favorite for <em>butterfly clicking</em> and fast control.</h2>
+          <p>Almost every experienced Minecrafter has heard of the Glorious Model O. It’s famous for letting users lower debounce to 0ms, which can make one finger movement register as two clicks and help with faster clicking techniques.</p>
+          <div class="mouse-hero-image">
+            <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUDcf0AZMEWQeHCYXoWpi6iL8p7ZKMZsddfhQHmvky5BcaBIfXcHGh_3GgAKNCPKRwpUkEpDxa1VnxC2vMr1uWw8IHPgL8Rp7c5RBhGIsz5XY37ZDs7x8cp8dLsZBBhgUjEYUPYipCE5vlpukQAJcO7qrvJVa_dWGt_76-2qbkoHKUOmK-pATrZGW_lktTplmT1w8dl6rr9IzYqGbVhLVVVqzLBQnDVxqr5wQmU=w1280" alt="Glorious Model O" loading="lazy" />
+          </div>
+          <div class="hero-cta">
+            <a href="minecraft.html" class="btn btn-primary">Back to Minecraft Mouses</a>
+            <a href="../mouses.html" class="btn btn-ghost">Browse all mouses</a>
+          </div>
+        </div>
+
+        <div class="about-cards reveal">
+          <div class="feature-card">
+            <div class="fc-icon">⚡</div>
+            <h4>Fast input feel</h4>
+            <p>Low debounce and a light, responsive feel make it a strong fit for fast clicking and quick camera movement.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🧠</div>
+            <h4>Built for practice</h4>
+            <p>Great for butterfly and jitter clicking, especially if you want a mouse that feels easy to control.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Why it stands out</span>
+          <h2>What makes the Glorious Model O worth considering</h2>
+        </div>
+        <div class="about-cards reveal">
+          <div class="feature-card">
+            <div class="fc-icon">🔧</div>
+            <h4>0ms debounce setting</h4>
+            <p>Enables faster input behavior for users who want to push their clicking style and experiment with high-CPS techniques.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">📏</div>
+            <h4>Lightweight and balanced</h4>
+            <p>It weighs 68g and is balanced well enough that the added weight is often hard to feel during normal play.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🎯</div>
+            <h4>Tracking and DPI</h4>
+            <p>Tracking reaches 250+ IPS on wired and 400+ IPS on wireless, with up to 12,000 DPI on wired and 19,000 on wireless.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🎨</div>
+            <h4>RGB and buttons</h4>
+            <p>Customizable RGB and 6 fully programmable buttons make it flexible for both play and daily use.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-links">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">ProMouser take</span>
+          <h2>What we noticed while using it</h2>
+        </div>
+        <div class="about-cards reveal">
+          <div class="feature-card">
+            <div class="fc-icon">👍</div>
+            <h4>Best for butterfly and jitter clicking</h4>
+            <p>The buttons feel easy to control and are very comfortable for fast, repeated clicks. It is not the best choice for drag click.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">⚠️</div>
+            <h4>Small limitations</h4>
+            <p>The software is a little older and doesn’t offer as many lighting or customization options as newer mice, but it is still good enough for everyday use.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">⭐</div>
+            <h4>Our rating</h4>
+            <p>For players who want a fast, light, and responsive mouse for Minecraft and clicking practice, this is a strong pick. Our overall takeaway is 9.5/10.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Where to buy</span>
+          <h2>Trusted buying options</h2>
+          <p>These links are included so you can compare pricing and availability quickly.</p>
+        </div>
+        <div class="about-cards reveal">
+          <div class="feature-card">
+            <div class="fc-icon">🟢</div>
+            <h4>Desertcart.in</h4>
+            <p>Offer price: <strong>₹5871</strong></p>
+            <a href="https://www.desertcart.in/products/249047055-glorious-gaming-mouse-model-o-67-g-superlight-honeycomb-mouse?source=search" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Buy on Desertcart</a>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🟢</div>
+            <h4>Amazon.in</h4>
+            <p>Offer price: <strong>₹7935</strong></p>
+            <a href="https://www.amazon.in/Glorious-PC-Gaming-Race-GOM-Black/dp/B07VMM5LKH/ref=sr_1_10?crid=3266TFLLD1DJS&dib=eyJ2IjoiMSJ9.A0ob6KMUZ1vhx6Lcz8YX7OU-4pnyqVfLUnCTF-8FIQeqyFaCjkgVSDIRK1eM1S-Mz39QLDiAX9CfuB729uXbkjZrXwSvehCZ9WSVS3GqYylTve8sQwBd_gU-hM5lBAaNHxEXDsLegr0V9lV8du2KGRgVZSXeHzGz_QOXTbumYnr0mYFTn_VEyk7A3hNO1G1tbz6Hd3EIyXk-2U2DVBpuDehQS3U4SOHJUS87foMl1ho.rwJhW-b9dHzpQvbmSMXBrFFM5Ua_7k73a51e8uICk4s&dib_tag=se&keywords=glorious+model+o&nsdOptOutParam=true&qid=1770720636&sprefix=glorious+model%2Caps%2C456&sr=8-10" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Buy on Amazon</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">⬡</span>
+        <strong>ProMouser</strong>
+        <p>The mouse guide built for gamers, by gamers.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Explore</h5>
+          <a href="../mouses.html">Browse Mice</a>
+          <a href="../hand-grip.html">Hand Grip</a>
+          <a href="../mouse-tips.html">Mouse Tips</a>
+          <a href="../minecraft-tips.html">Minecraft Tips</a>
+        </div>
+        <div class="footer-col">
+          <h5>Tools</h5>
+          <a href="../cps-test.html">CPS Test</a>
+          <a href="../double-click-test.html">Double Click Test</a>
+          <a href="../mouse-ai.html">Mouse AI</a>
+          <a href="../image-gen.html">Image Generator</a>
+        </div>
+        <div class="footer-col">
+          <h5>About</h5>
+          <a href="../about.html">About Us</a>
+          <a href="../elite.html">ProMouser Elite</a>
+          <a href="https://www.youtube.com/@ProMouser" target="_blank" rel="noopener noreferrer">YouTube ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 ProMouser · Built with 🖱️</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
