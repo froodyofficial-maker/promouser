@@ -1,33 +1,34 @@
 # ProMouser
 
-ProMouser is a website built for gamers and PC users looking for better control, smoother performance, and a cleaner setup experience. The site focuses mainly on mice, peripherals, setup content, and useful tools for improving gameplay and productivity.
+ProMouser is a website for gamers and PC users who want practical guidance on mice and peripherals, plus lightweight tools for measuring and improving performance.
 
-## What the Website Offers
+## What the website offers
 
-- Gaming mouse recommendations
+- Gaming mouse recommendations and guides
 - Setup and peripheral content
-- Performance-focused tools
-- Clean and simple interface
-- Fast loading pages
-- Mobile and desktop support
+- Performance-focused tools (e.g., CPS test)
+- Lightweight UI and fast page loads
+- Responsive layout for mobile and desktop
 
 ## Website
 
 https://www.promouser.shop/
 
-## Built With
+## Built with
 
 - HTML
 - CSS
 - JavaScript
 
-## Design Goal
+## Design goal
 
-The main goal of ProMouser is to keep everything simple, lightweight, and easy to use without unnecessary clutter. The website is designed to work smoothly across different devices while keeping a modern look.
+Keep the site simple, lightweight, and easy to use without unnecessary clutter, while maintaining a modern and consistent visual style.
 
-## Running Locally
-
-Clone the repository:
+## Running locally
 
 ```bash
 git clone https://github.com/froodyofficial-maker/promouser.git
+cd promouser
+```
+
+Then open `index.html` in your browser, or serve the folder with any static server.

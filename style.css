@@ -718,6 +718,30 @@ ul { list-style: none; }
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 .fc-icon { font-size: 24px; margin-bottom: 12px; }
+
+/* Emoji-free icon styling (uses data-icon labels) */
+.fc-icon,
+.ql-icon,
+.cps-stage-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+  user-select: none;
+}
+.fc-icon::before,
+.ql-icon::before,
+.cps-stage-icon::before {
+  content: attr(data-icon);
+}
 .feature-card h4 {
   font-size: 15px;
   font-weight: 700;
@@ -819,10 +843,6 @@ ul { list-style: none; }
 
 .cps-stage-overlay.hidden {
   display: none;
-}
-
-.cps-stage-icon {
-  font-size: 32px;
 }
 
 .cps-stage-overlay p {
