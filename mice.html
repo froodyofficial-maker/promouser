@@ -37,6 +37,7 @@
           <a href="mice.html" class="active">Mice <span class="chevron">▾</span></a>
           <ul class="dropdown">
             <li><a href="hand-grip.html">Hand Grip</a></li>
+            <li><a href="mice/compare.html">Compare mice</a></li>
             <li class="has-dropdown-nested">
               <a href="mouse-tips.html">Mouse Tips <span class="chevron">▸</span></a>
               <ul class="dropdown-nested">
@@ -144,6 +145,14 @@
             </div>
             <span class="ql-arrow">→</span>
           </a>
+          <a href="mice/compare.html" class="ql-card">
+            <div class="ql-icon" data-icon="Versus"></div>
+            <div class="ql-text">
+              <h3>Compare mice</h3>
+              <p>Quick side-by-side comparison of top picks</p>
+            </div>
+            <span class="ql-arrow">→</span>
+          </a>
           <a href="mouse-tips.html" class="ql-card ql-highlight">
             <div class="ql-icon" data-icon="Tips"></div>
             <div class="ql-text">
@@ -152,6 +161,165 @@
             </div>
             <span class="ql-arrow">→</span>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pro-generator">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Pro generator</span>
+          <h2>Generate the best mouse profile instantly</h2>
+          <p>Use the ProMouser engine to configure a matching mouse profile by play style, grip, weight, and connection.</p>
+        </div>
+
+        <div class="generator-grid reveal">
+          <div class="generator-panel">
+            <div class="generator-header">
+              <span class="generator-tag">Next-gen AI pick</span>
+              <h3>Build your optimal match</h3>
+              <p>Adjust the inputs and get a personalized recommendation instantly.</p>
+            </div>
+
+            <div class="generator-controls">
+              <label>Primary focus</label>
+              <select id="generatorFocusSelect">
+                <option value="fps">FPS speed</option>
+                <option value="office">Office precision</option>
+                <option value="creative">Creative control</option>
+                <option value="productivity">Productivity</option>
+              </select>
+
+              <label>Grip intensity</label>
+              <select id="generatorGripSelect">
+                <option value="palm">Palm</option>
+                <option value="claw">Claw</option>
+                <option value="fingertip">Fingertip</option>
+              </select>
+
+              <label>Weight bias</label>
+              <select id="generatorWeightSelect">
+                <option value="light">Light</option>
+                <option value="balanced">Balanced</option>
+                <option value="heavy">Heavy</option>
+              </select>
+
+              <label>Connectivity</label>
+              <select id="generatorConnectionSelect">
+                <option value="wired">Wired</option>
+                <option value="wireless">Wireless</option>
+              </select>
+
+              <button id="generatorRunBtn" class="btn btn-primary">Generate match</button>
+            </div>
+          </div>
+
+          <div class="generator-preview" id="generatorPreview">
+            <div class="generator-preview-card">
+              <span class="compare-tag">Pro match</span>
+              <h3 id="generatorResultTitle">Ready to generate</h3>
+              <p id="generatorResultCopy">A detailed recommendation will appear here once you choose your preferences.</p>
+            </div>
+            <div class="generator-stats">
+              <div class="generator-stat">
+                <strong id="generatorScore">0%</strong>
+                <span>Confidence</span>
+              </div>
+              <div class="generator-stat">
+                <strong id="generatorGripScore">0%</strong>
+                <span>Grip fit</span>
+              </div>
+              <div class="generator-stat">
+                <strong id="generatorWeightScore">0%</strong>
+                <span>Weight fit</span>
+              </div>
+              <div class="generator-stat">
+                <strong id="generatorWirelessScore">0%</strong>
+                <span>Wireless match</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="compare-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Mouse comparison</span>
+          <h2>Compare the top picks side-by-side</h2>
+          <p>Match mouse features, weight, grip, and game style so you can choose the right option faster.</p>
+        </div>
+
+        <div class="compare-layout reveal">
+          <div class="compare-summary">
+            <div class="compare-feature-card">
+              <span class="compare-tag">Fast comparison</span>
+              <h3>What to compare first</h3>
+              <p>Start with the features that matter most for your setup: whether you need a light, fast gaming mouse or a comfortable everyday office option. This chart helps you compare the best models without getting lost in specs.</p>
+              <div class="compare-cta">
+                <a href="mice/compare.html">Open the comparison page</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="compare-table-wrap">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>G502 Hero</th>
+                  <th>DeathAdder V3</th>
+                  <th>Model O</th>
+                  <th>Superlight Pro X</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Best use</td>
+                  <td>FPS & productivity</td>
+                  <td>Comfortable everyday gaming</td>
+                  <td>Lightweight FPS</td>
+                  <td>Competitive wireless</td>
+                </tr>
+                <tr>
+                  <td>Grip style</td>
+                  <td>Palm / claw</td>
+                  <td>Palm / claw</td>
+                  <td>Claw / fingertip</td>
+                  <td>Fingertip / claw</td>
+                </tr>
+                <tr>
+                  <td>Weight</td>
+                  <td>121 g</td>
+                  <td>82 g</td>
+                  <td>67 g</td>
+                  <td>63 g</td>
+                </tr>
+                <tr>
+                  <td>Sensor</td>
+                  <td>HERO 25K</td>
+                  <td>Focus+</td>
+                  <td>PixArt 3370</td>
+                  <td>HERO 25K</td>
+                </tr>
+                <tr>
+                  <td>Connectivity</td>
+                  <td>Wired</td>
+                  <td>Wired</td>
+                  <td>Wired</td>
+                  <td>Wireless</td>
+                </tr>
+                <tr>
+                  <td>Best feature</td>
+                  <td>Customizable weights & buttons</td>
+                  <td>Comfort for long sessions</td>
+                  <td>Ultra-light and agile</td>
+                  <td>Wireless performance</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>

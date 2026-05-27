@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-US" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <link rel="icon" href="../assets/icons/favicon.png" type="image/png" />
+  <meta property="og:title" content="ProMouser - Compare mice" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.promouser.shop/mice/compare.html" />
+  <meta property="og:description" content="Side-by-side comparison of the best mice for gaming and everyday use." />
+  <meta itemprop="name" content="ProMouser - Compare mice" />
+  <meta itemprop="description" content="Side-by-side comparison of the best mice for gaming and everyday use." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <title>ProMouser - Compare mice</title>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <nav class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        ProMouser
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li class="has-dropdown">
+          <a href="../index.html">Home <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="../mouse-ai.html">Recommendation Assistant</a></li>
+            <li><a href="../about.html">About Us</a></li>
+            <li><a href="../image-gen.html">Image Generation <span class="badge">New</span></a></li>
+            <li><a href="../elite.html">ProMouser Elite</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="../mice.html" class="active">Mice <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="../hand-grip.html">Hand Grip</a></li>
+            <li><a href="../mice/compare.html">Compare mice</a></li>
+            <li class="has-dropdown-nested">
+              <a href="../mouse-tips.html">Mouse Tips <span class="chevron">▸</span></a>
+              <ul class="dropdown-nested">
+                <li><a href="../minecraft-tips.html">Minecraft Tips</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="../tests.html">Tests <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="../cps-test.html">CPS Test</a></li>
+            <li><a href="../double-click-test.html">Double Click Test</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <button class="nav-search-btn" id="navSearchBtn" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="search" placeholder="Search ProMouser…" id="searchInput" autocomplete="off" />
+        <button id="closeSearch" aria-label="Close search">✕</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="about-section" id="hero">
+      <div class="container section-header reveal">
+        <span class="section-label">Compare mice</span>
+        <h2>Compare top picks side-by-side</h2>
+        <p>Quickly review the strongest options for gaming and everyday use so you can match the right mouse to your needs.</p>
+      </div>
+      <div class="container compare-layout reveal">
+        <div class="compare-summary">
+          <div class="compare-feature-card">
+            <span class="compare-tag">Fast decision</span>
+            <h3>What this comparison helps you do</h3>
+            <p>See how four popular mice stack up across grip style, weight, sensor, and connection type. Use this page to identify the one that fits your hand, game style, and budget without overspending on features you don't need.</p>
+          </div>
+          <div class="compare-feature-card">
+            <span class="compare-tag">Focus areas</span>
+            <p><strong>Grip match</strong> matters more than raw DPI. Lightweight mice move faster, but comfort and stick fit matter in long play sessions.</p>
+            <p><strong>Sensor type</strong> tells you whether the mouse is tuned for responsiveness or comfort. For competitive aim, prioritize low-latency sensors and wireless performance.</p>
+          </div>
+          <div class="compare-cta">
+            <a href="../mice.html">Back to mice page</a>
+            <a href="../mice/extra.html">Explore extra picks</a>
+          </div>
+        </div>
+
+        <div class="compare-panel" id="comparePanel" aria-live="polite">
+          <div class="compare-controls">
+            <div class="compare-control-group">
+              <label for="gameTypeSelect">Game style</label>
+              <select id="gameTypeSelect">
+                <option value="fps">FPS</option>
+                <option value="productivity">Productivity</option>
+                <option value="office">Office</option>
+                <option value="creative">Creative</option>
+              </select>
+            </div>
+            <div class="compare-control-group">
+              <label for="gripStyleSelect">Grip style</label>
+              <select id="gripStyleSelect">
+                <option value="palm">Palm</option>
+                <option value="claw">Claw</option>
+                <option value="fingertip">Fingertip</option>
+              </select>
+            </div>
+            <div class="compare-control-group">
+              <label for="weightPreferenceSelect">Weight preference</label>
+              <select id="weightPreferenceSelect">
+                <option value="any">Any</option>
+                <option value="light">Light</option>
+                <option value="balanced">Balanced</option>
+                <option value="heavy">Heavy</option>
+              </select>
+            </div>
+            <div class="compare-control-group">
+              <label for="connectionSelect">Connection</label>
+              <select id="connectionSelect">
+                <option value="any">Any</option>
+                <option value="wired">Wired</option>
+                <option value="wireless">Wireless</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="compare-score-grid">
+            <div class="compare-score-card">
+              <span class="compare-tag">Best match</span>
+              <h3 id="recommendationTitle">G502 Hero</h3>
+              <p id="recommendationIntro">Balanced pick for most players.</p>
+              <div class="score-bar">
+                <span class="score-fill" id="recommendationScore" style="width:82%"></span>
+              </div>
+              <div class="score-meta">Match score: <strong id="recommendationValue">82%</strong></div>
+            </div>
+            <div class="compare-details">
+              <div class="score-item"><span>Grip match</span><strong id="matchGrip">84%</strong></div>
+              <div class="score-item"><span>Weight fit</span><strong id="matchWeight">77%</strong></div>
+              <div class="score-item"><span>Connection</span><strong id="matchConnection">100%</strong></div>
+              <div class="score-item"><span>Sensor fit</span><strong id="matchSensor">90%</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>G502 Hero</th>
+                <th>DeathAdder V3</th>
+                <th>Model O</th>
+                <th>Superlight Pro X</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-feature="use">
+                <td>Best use</td>
+                <td>FPS + productivity</td>
+                <td>Comfortable everyday gaming</td>
+                <td>Lightweight competitive FPS</td>
+                <td>Elite wireless performance</td>
+              </tr>
+              <tr data-feature="grip">
+                <td>Grip</td>
+                <td>Palm / claw</td>
+                <td>Palm / claw</td>
+                <td>Claw / fingertip</td>
+                <td>Fingertip / claw</td>
+              </tr>
+              <tr data-feature="weight">
+                <td>Weight</td>
+                <td>121 g</td>
+                <td>82 g</td>
+                <td>67 g</td>
+                <td>63 g</td>
+              </tr>
+              <tr data-feature="sensor">
+                <td>Sensor</td>
+                <td>HERO 25K</td>
+                <td>Focus+</td>
+                <td>PixArt 3370</td>
+                <td>HERO 25K</td>
+              </tr>
+              <tr data-feature="connection">
+                <td>Connection</td>
+                <td>Wired</td>
+                <td>Wired</td>
+                <td>Wired</td>
+                <td>Wireless</td>
+              </tr>
+              <tr data-feature="specialty">
+                <td>Best feature</td>
+                <td>Customizable weights + buttons</td>
+                <td>Ergonomic comfort</td>
+                <td>Ultra-light agility</td>
+                <td>Premium wireless speed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <div class="container about-grid">
+        <div class="about-text reveal">
+          <span class="section-label">Why compare</span>
+          <h2>Choose the right mouse faster</h2>
+          <p>Comparisons cut through marketing copy. When you know the features that matter, it becomes easier to find a mouse that fits your play style and grip.</p>
+          <p>On this page, the goal is to help you match build and weight with your own habits — not just show raw specs.</p>
+        </div>
+        <div class="about-cards reveal">
+          <div class="feature-card">
+            <div class="fc-icon" data-icon="Focus"></div>
+            <h4>Competitive value</h4>
+            <p>See which mice offer the best balance of speed, comfort, and price.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon" data-icon="Grip"></div>
+            <h4>Grip-friendly choices</h4>
+            <p>Find the mouse that fits your palm, claw, or fingertip preference.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon" data-icon="Speed"></div>
+            <h4>Performance clarity</h4>
+            <p>Compare connection type and sensor tech at a glance.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon" data-icon="Tools"></div>
+            <h4>Quick shopping guide</h4>
+            <p>Use the table to narrow the field before reading full reviews.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">⬡</span>
+        <strong>ProMouser</strong>
+        <p>The mouse guide built for gamers, by gamers.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Explore</h5>
+          <a href="../mice.html">Browse Mice</a>
+          <a href="../hand-grip.html">Hand Grip</a>
+          <a href="../mouse-tips.html">Mouse Tips</a>
+          <a href="../minecraft-tips.html">Minecraft Tips</a>
+        </div>
+        <div class="footer-col">
+          <h5>Tools</h5>
+          <a href="../cps-test.html">CPS Test</a>
+          <a href="../double-click-test.html">Double Click Test</a>
+          <a href="../mouse-ai.html">Recommendation Assistant</a>
+          <a href="../image-gen.html">Image Generator</a>
+        </div>
+        <div class="footer-col">
+          <h5>About</h5>
+          <a href="../about.html">About Us</a>
+          <a href="../elite.html">ProMouser Elite</a>
+          <a href="https://www.youtube.com/@ProMouser" target="_blank" rel="noopener noreferrer">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 ProMouser</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

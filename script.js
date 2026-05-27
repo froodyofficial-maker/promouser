@@ -4,6 +4,81 @@
 
 'use strict';
 
+/* ── SPLASH SCREEN + PAGE PROGRESS ── */
+(function () {
+  const body = document.body;
+  if (!body) return;
+
+  document.documentElement.dataset.splash = 'active';
+
+  const favicon = document.querySelector('link[rel="icon"]')?.href || 'assets/icons/favicon.png';
+  if (!document.querySelector('link[rel="mask-icon"]')) {
+    const maskIcon = document.createElement('link');
+    maskIcon.rel = 'mask-icon';
+    maskIcon.href = favicon;
+    maskIcon.color = '#e8ff00';
+    document.head.appendChild(maskIcon);
+  }
+  if (!document.querySelector('meta[name="theme-color"]')) {
+    const themeColor = document.createElement('meta');
+    themeColor.name = 'theme-color';
+    themeColor.content = '#0d0d0d';
+    document.head.appendChild(themeColor);
+  }
+
+  const splash = document.createElement('div');
+  splash.className = 'splash-screen';
+  splash.innerHTML = `
+    <div class="splash-inner">
+      <div class="splash-logo"><span class="logo-icon">⬡</span></div>
+      <div class="splash-tagline">ProMouser Elite Launch</div>
+      <div class="splash-bar"><span class="splash-bar-fill"></span></div>
+      <div class="splash-meta">Initializing performance matrix…</div>
+    </div>`;
+
+  body.prepend(splash);
+
+  const fill = splash.querySelector('.splash-bar-fill');
+  let progress = 0;
+
+  const tick = () => {
+    progress = Math.min(100, progress + Math.random() * 16 + 6);
+    if (fill) fill.style.width = `${progress}%`;
+    if (progress < 98) requestAnimationFrame(tick);
+  };
+
+  setTimeout(() => requestAnimationFrame(tick), 50);
+
+  const removeSplash = () => {
+    splash.classList.add('hidden');
+    document.documentElement.dataset.splash = 'false';
+    setTimeout(() => splash.remove(), 700);
+  };
+
+  window.addEventListener('load', () => {
+    if (fill) fill.style.width = '100%';
+    setTimeout(removeSplash, 550);
+  });
+
+  setTimeout(removeSplash, 2600);
+})();
+
+(function () {
+  const progressBar = document.createElement('div');
+  progressBar.className = 'scroll-progress';
+  document.body.appendChild(progressBar);
+
+  const update = () => {
+    const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = documentHeight > 0
+      ? `${Math.min(100, (window.scrollY / documentHeight) * 100)}%`
+      : '0%';
+  };
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
 /* ── ANNOUNCEMENT BAR ── */
 (function () {
   const bar    = document.getElementById('announcementBar');
@@ -281,6 +356,289 @@
   );
 
   sections.forEach(s => observer.observe(s));
+})();
+
+
+/* ── SEARCH INDEX + COMPARE ANALYTICS ── */
+(function () {
+  const normalize = text => String(text || '')
+    .normalize('NFKD')
+    .replace(/\p{Diacritic}/gu, '')
+    .replace(/[^\p{L}\p{N}\s]+/gu, ' ')
+    .trim()
+    .toLowerCase();
+
+  const createSearchHost = overlay => {
+    let host = document.getElementById('searchResults');
+    if (host) return host;
+    host = document.createElement('div');
+    host.id = 'searchResults';
+    host.className = 'search-results';
+    overlay.appendChild(host);
+    return host;
+  };
+
+  class SearchIndex {
+    constructor(items) {
+      this.items = items.map(item => ({
+        ...item,
+        tokens: normalize(`${item.title} ${item.description}`).split(/\s+/).filter(Boolean)
+      }));
+    }
+
+    search(query) {
+      const terms = normalize(query).split(/\s+/).filter(Boolean);
+      if (!terms.length) return [];
+      const results = this.items.map(item => {
+        const score = terms.reduce((sum, token) => {
+          const index = item.tokens.indexOf(token);
+          return sum + (index === -1 ? 0 : 30 - index);
+        }, 0) + terms.reduce((sum, token) => {
+          return sum + (item.title.includes(token) ? 8 : 0);
+        }, 0);
+        return { ...item, score };
+      }).filter(item => item.score > 0);
+
+      return results.sort((a, b) => b.score - a.score).slice(0, 8);
+    }
+  }
+
+  const overlay = document.getElementById('searchOverlay');
+  const input = document.getElementById('searchInput');
+  if (overlay && input) {
+    const resultsHost = createSearchHost(overlay);
+    const links = Array.from(document.querySelectorAll('a[href]'))
+      .filter(link => {
+        const href = link.getAttribute('href');
+        return href && !href.startsWith('#') && !href.startsWith('javascript:') && href.trim();
+      })
+      .map(link => ({
+        title: link.textContent.trim() || link.getAttribute('href'),
+        url: link.getAttribute('href'),
+        description: link.dataset.search || '',
+        text: normalize(link.textContent.trim()),
+      }));
+
+    const index = new SearchIndex(links);
+    let activeResult = -1;
+
+    const renderResults = items => {
+      resultsHost.innerHTML = items.length
+        ? items.map(item => `
+            <button class="search-result-item" type="button" data-href="${item.url}">
+              <span><strong>${item.title}</strong><div class="search-result-meta">${item.description || item.url}</div></span>
+              <span>→</span>
+            </button>
+          `).join('')
+        : '<div class="search-empty">No results yet. Try a different search term.</div>';
+
+      resultsHost.querySelectorAll('.search-result-item').forEach((button, index) => {
+        button.addEventListener('click', () => {
+          const href = button.dataset.href;
+          if (href) window.location.href = href;
+        });
+      });
+      activeResult = -1;
+    };
+
+    const executeSearch = query => {
+      if (!query) {
+        resultsHost.innerHTML = '<div class="search-empty">Search pages, compare features, and find mouse advice instantly.</div>';
+        return;
+      }
+      renderResults(index.search(query));
+    };
+
+    input.addEventListener('input', e => executeSearch(e.target.value));
+    input.addEventListener('keydown', e => {
+      const items = Array.from(resultsHost.querySelectorAll('.search-result-item'));
+      if (!items.length) return;
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        activeResult = Math.min(activeResult + 1, items.length - 1);
+        items.forEach((item, idx) => item.classList.toggle('active', idx === activeResult));
+        items[activeResult]?.focus();
+      }
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        activeResult = Math.max(activeResult - 1, 0);
+        items.forEach((item, idx) => item.classList.toggle('active', idx === activeResult));
+        items[activeResult]?.focus();
+      }
+      if (e.key === 'Enter' && activeResult >= 0) {
+        e.preventDefault();
+        items[activeResult].click();
+      }
+    });
+
+    overlay.addEventListener('animationend', () => {
+      if (overlay.classList.contains('open')) input.focus();
+    });
+
+    executeSearch('');
+  }
+
+  class CompareEngine extends EventTarget {
+    #config = {
+      mice: [
+        { id: 'g502', name: 'G502 Hero', grip: ['palm', 'claw'], weight: 121, sensor: 'hero 25k', connection: 'wired', use: ['fps', 'productivity'], specialty: 'buttons' },
+        { id: 'deathadder', name: 'DeathAdder V3', grip: ['palm', 'claw'], weight: 82, sensor: 'focus+', connection: 'wired', use: ['office', 'productivity'], specialty: 'comfort' },
+        { id: 'model-o', name: 'Model O', grip: ['claw', 'fingertip'], weight: 67, sensor: 'pixart 3370', connection: 'wired', use: ['fps', 'creative'], specialty: 'lightweight' },
+        { id: 'superlight', name: 'Superlight Pro X', grip: ['fingertip', 'claw'], weight: 63, sensor: 'hero 25k', connection: 'wireless', use: ['fps', 'office'], specialty: 'wireless' }
+      ],
+      weights: {
+        game: 40,
+        grip: 25,
+        weight: 20,
+        connection: 10,
+        specialty: 5
+      }
+    };
+
+    #state = { game: 'fps', grip: 'claw', weight: 'balanced', connection: 'any' };
+    #root;
+    #elements = {};
+    #rowMap = new Map([['use', 'use'], ['grip', 'grip'], ['weight', 'weight'], ['sensor', 'sensor'], ['connection', 'connection']]);
+
+    constructor(root) {
+      super();
+      this.#root = root;
+      this.#elements = {
+        game: document.getElementById('gameTypeSelect'),
+        grip: document.getElementById('gripStyleSelect'),
+        weight: document.getElementById('weightPreferenceSelect'),
+        connection: document.getElementById('connectionSelect'),
+        title: document.getElementById('recommendationTitle'),
+        intro: document.getElementById('recommendationIntro'),
+        score: document.getElementById('recommendationScore'),
+        scoreValue: document.getElementById('recommendationValue'),
+        gripMatch: document.getElementById('matchGrip'),
+        weightMatch: document.getElementById('matchWeight'),
+        connectionMatch: document.getElementById('matchConnection'),
+        sensorMatch: document.getElementById('matchSensor')
+      };
+    }
+
+    init() {
+      if (!this.#root) return;
+      this.#hydrateState();
+      this.#bindControls();
+      this.#render();
+    }
+
+    #hydrateState() {
+      try {
+        const saved = JSON.parse(localStorage.getItem('pm_compare_state') || '{}');
+        this.#state = { ...this.#state, ...saved };
+      } catch (error) {
+        this.#state = { ...this.#state };
+      }
+      const params = new URLSearchParams(location.search);
+      ['game', 'grip', 'weight', 'connection'].forEach(key => {
+        const value = params.get(key);
+        if (value) this.#state[key] = value;
+      });
+      Object.entries(this.#elements).forEach(([key, el]) => {
+        if (el && this.#state[key]) el.value = this.#state[key];
+      });
+    }
+
+    #bindControls() {
+      ['game', 'grip', 'weight', 'connection'].forEach(key => {
+        const el = this.#elements[key];
+        if (!el) return;
+        el.addEventListener('change', () => {
+          this.#state[key] = el.value;
+          this.#saveState();
+          this.#updateURL();
+          this.#render();
+          this.dispatchEvent(new CustomEvent('compare:update', { detail: { ...this.#state } }));
+        });
+      });
+    }
+
+    #saveState() {
+      localStorage.setItem('pm_compare_state', JSON.stringify(this.#state));
+    }
+
+    #updateURL() {
+      const params = new URLSearchParams(location.search);
+      Object.entries(this.#state).forEach(([key, value]) => params.set(key, value));
+      history.replaceState({}, '', `${location.pathname}?${params.toString()}`);
+    }
+
+    #weightScore(mouse) {
+      if (this.#state.weight === 'any') return 1;
+      const ideal = { light: 75, balanced: 95, heavy: 110 }[this.#state.weight];
+      const diff = Math.abs(mouse.weight - ideal);
+      return Math.max(0, 1 - diff / 90);
+    }
+
+    #sensorScore(mouse) {
+      return mouse.use.includes(this.#state.game) ? 1 : 0.55;
+    }
+
+    #matchValue(value, expected) {
+      return value === expected ? 1 : 0.4;
+    }
+
+    #computeScores() {
+      return this.#config.mice.map(mouse => {
+        const gameScore = mouse.use.includes(this.#state.game) ? 1 : 0.3;
+        const gripScore = mouse.grip.includes(this.#state.grip) ? 1 : 0.35;
+        const connectionScore = this.#state.connection === 'any' ? 1 : this.#matchValue(mouse.connection, this.#state.connection);
+        const weightScore = this.#weightScore(mouse);
+        const specialtyScore = mouse.specialty === 'wireless' && this.#state.connection === 'wireless' ? 1 : 0.75;
+        const total = Math.round(
+          (gameScore * this.#config.weights.game) +
+          (gripScore * this.#config.weights.grip) +
+          (weightScore * this.#config.weights.weight) +
+          (connectionScore * this.#config.weights.connection) +
+          (specialtyScore * this.#config.weights.specialty)
+        );
+
+        return {
+          ...mouse,
+          score: Math.min(100, total),
+          details: { gameScore, gripScore, weightScore, connectionScore, specialtyScore }
+        };
+      }).sort((a, b) => b.score - a.score);
+    }
+
+    #render() {
+      const [winner] = this.#computeScores();
+      const memo = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+      if (!winner) return;
+      const gripMatch = Math.round(winner.details.gripScore * 100);
+      const weightMatch = Math.round(winner.details.weightScore * 100);
+      const connectionMatch = Math.round(winner.details.connectionScore * 100);
+      const sensorMatch = Math.round(winner.details.gameScore * 100);
+
+      this.#elements.title.textContent = winner.name;
+      this.#elements.intro.textContent = `${winner.name} is the best fit for ${this.#state.game} with ${this.#state.grip} grip.`;
+      this.#elements.score.style.width = `${winner.score}%`;
+      this.#elements.scoreValue.textContent = `${memo.format(winner.score)}%`;
+      this.#elements.gripMatch.textContent = `${memo.format(gripMatch)}%`;
+      this.#elements.weightMatch.textContent = `${memo.format(weightMatch)}%`;
+      this.#elements.connectionMatch.textContent = `${memo.format(connectionMatch)}%`;
+      this.#elements.sensorMatch.textContent = `${memo.format(sensorMatch)}%`;
+
+      this.#rowMap.forEach((feature, property) => {
+        const row = this.#root.querySelector(`[data-feature="${feature}"]`);
+        if (!row) return;
+        const isMatch = property === 'weight'
+          ? winner.details.weightScore > 0.65
+          : property === 'connection'
+            ? winner.details.connectionScore > 0.7
+            : property === 'sensor'
+              ? winner.details.gameScore > 0.7
+              : winner.details[`${property}Score`]?.toFixed !== undefined;
+        row.classList.toggle('highlight', isMatch);
+      });
+    }
+  }
+
+  new CompareEngine(document.getElementById('comparePanel')).init();
 })();
 
 
