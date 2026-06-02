@@ -22,7 +22,7 @@
   <header class="site-header" id="siteHeader">
     <nav class="nav-container">
       <a href="../index.html" class="nav-logo">
-        <span class="logo-icon">⬡</span>
+        <img src="../assets/icons/favicon.png" alt="ProMouser logo" class="logo-icon">
         ProMouser
       </a>
       <ul class="nav-links" id="navLinks">
@@ -213,6 +213,36 @@
             </tbody>
           </table>
         </div>
+        <div class="compare-insights reveal">
+          <div class="compare-radar-card">
+            <span class="compare-tag">Performance radar</span>
+            <h3>Mouse strength profile</h3>
+            <div class="radar-frame">
+              <svg viewBox="0 0 280 280" class="radar-chart" id="compareRadarChart">
+                <circle cx="140" cy="140" r="108" class="radar-ring" />
+                <circle cx="140" cy="140" r="80" class="radar-ring" />
+                <circle cx="140" cy="140" r="52" class="radar-ring" />
+                <path id="radarArea" class="radar-area" d="" />
+                <g class="radar-grid">
+                  <line x1="140" y1="140" x2="140" y2="32" />
+                  <line x1="140" y1="140" x2="248" y2="140" />
+                  <line x1="140" y1="140" x2="140" y2="248" />
+                  <line x1="140" y1="140" x2="32" y2="140" />
+                </g>
+                <text x="140" y="18" class="radar-label">Speed</text>
+                <text x="266" y="146" class="radar-label">Sensor</text>
+                <text x="142" y="274" class="radar-label">Comfort</text>
+                <text x="18" y="146" class="radar-label">Wireless</text>
+              </svg>
+            </div>
+          </div>
+          <div class="compare-metrics-card">
+            <span class="compare-tag">Pro insights</span>
+            <h3>Compare by performance weights</h3>
+            <p>Interactive analytics help you understand which mouse excels in speed, sensor quality, comfort, and wireless performance.</p>
+            <button id="regenRadarBtn" class="btn btn-ghost">Refresh radar</button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -253,7 +283,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="logo-icon">⬡</span>
+        <img src="../assets/icons/favicon.png" alt="ProMouser logo" class="logo-icon">
         <strong>ProMouser</strong>
         <p>The mouse guide built for gamers, by gamers.</p>
       </div>

@@ -30,8 +30,9 @@
   splash.className = 'splash-screen';
   splash.innerHTML = `
     <div class="splash-inner">
-      <div class="splash-logo"><span class="logo-icon">⬡</span></div>
-      <div class="splash-tagline">ProMouser Elite Launch</div>
+      <div class="splash-logo"><img src="${favicon}" alt="ProMouser logo"></div>
+      <div class="splash-title">ProMouser Launching</div>
+      <div class="splash-note">ProMouser Launch</div>
       <div class="splash-bar"><span class="splash-bar-fill"></span></div>
       <div class="splash-meta">Initializing performance matrix…</div>
     </div>`;
@@ -639,6 +640,134 @@
   }
 
   new CompareEngine(document.getElementById('comparePanel')).init();
+})();
+
+/* ── PRO GENERATOR ENGINE ── */
+(function () {
+  const focusEl = document.getElementById('generatorFocusSelect');
+  if (!focusEl) return;
+
+  const mice = [
+    { id: 'g502', name: 'G502 Hero', focus: ['fps', 'productivity'], grip: ['palm', 'claw'], weight: 121, connection: 'wired', wireless: 0, description: 'Hybrid FPS and productivity mouse with customizable buttons.' },
+    { id: 'deathadder', name: 'DeathAdder V3', focus: ['office', 'productivity'], grip: ['palm', 'claw'], weight: 82, connection: 'wired', wireless: 0, description: 'Comfort-first design for long office sessions.' },
+    { id: 'model-o', name: 'Model O', focus: ['fps', 'creative'], grip: ['claw', 'fingertip'], weight: 67, connection: 'wired', wireless: 0, description: 'Ultra-light mouse for aggressive competitive play.' },
+    { id: 'superlight', name: 'Superlight Pro X', focus: ['fps', 'office'], grip: ['fingertip', 'claw'], weight: 63, connection: 'wireless', wireless: 1, description: 'Premium wireless performance for elite players.' }
+  ];
+
+  const elements = {
+    focus: document.getElementById('generatorFocusSelect'),
+    grip: document.getElementById('generatorGripSelect'),
+    weight: document.getElementById('generatorWeightSelect'),
+    connection: document.getElementById('generatorConnectionSelect'),
+    run: document.getElementById('generatorRunBtn'),
+    title: document.getElementById('generatorResultTitle'),
+    copy: document.getElementById('generatorResultCopy'),
+    score: document.getElementById('generatorScore'),
+    gripScore: document.getElementById('generatorGripScore'),
+    weightScore: document.getElementById('generatorWeightScore'),
+    wirelessScore: document.getElementById('generatorWirelessScore')
+  };
+
+  const compute = ({ focus, grip, weight, connection }, mouse) => {
+    const focusScore = mouse.focus.includes(focus) ? 1 : 0.35;
+    const gripScore = mouse.grip.includes(grip) ? 1 : 0.3;
+    const weightTarget = { light: 70, balanced: 90, heavy: 110 }[weight] || 85;
+    const weightDiff = Math.abs(mouse.weight - weightTarget) / 100;
+    const weightScore = Math.max(0, 1 - weightDiff);
+    const connectionMatch = connection === 'any' ? 1 : (mouse.connection === connection ? 1 : 0.25);
+    const wireless = mouse.wireless && connection === 'wireless' ? 0.1 : 0;
+    const total = (focusScore * 0.35) + (gripScore * 0.25) + (weightScore * 0.2) + (connectionMatch * 0.15) + wireless;
+    return {
+      score: Math.round(Math.max(0, Math.min(100, total * 100))),
+      focusScore: Math.round(focusScore * 100),
+      gripScore: Math.round(gripScore * 100),
+      weightScore: Math.round(weightScore * 100),
+      connectionScore: Math.round(connectionMatch * 100)
+    };
+  };
+
+  const render = result => {
+    elements.title.textContent = `${result.name} recommended`;
+    elements.copy.textContent = result.description;
+    elements.score.textContent = `${result.match.score}%`;
+    elements.gripScore.textContent = `${result.match.gripScore}%`;
+    elements.weightScore.textContent = `${result.match.weightScore}%`;
+    elements.wirelessScore.textContent = `${result.match.connectionScore}%`;
+  };
+
+  const run = () => {
+    const input = {
+      focus: String(elements.focus.value).toLowerCase(),
+      grip: String(elements.grip.value).toLowerCase(),
+      weight: String(elements.weight.value).toLowerCase(),
+      connection: String(elements.connection.value).toLowerCase()
+    };
+    const results = mice.map(m => ({ ...m, match: compute(input, m) })).sort((a, b) => b.match.score - a.match.score);
+    render(results[0]);
+  };
+
+  elements.run?.addEventListener('click', run);
+  ['focus', 'grip', 'weight', 'connection'].forEach(key => {
+    elements[key]?.addEventListener('change', run);
+  });
+  run();
+})();
+
+/* ── PAGE TRANSITION + LINK PREFETCH ── */
+(function () {
+  const shouldHandle = url => {
+    if (!url || url.startsWith('mailto:') || url.startsWith('tel:') || url.startsWith('#') || url.startsWith('javascript:')) return false;
+    try {
+      const target = new URL(url, location.href);
+      return target.origin === location.origin;
+    } catch { return false; }
+  };
+
+  document.body.addEventListener('click', event => {
+    const link = event.target.closest('a');
+    if (!link || !link.href || !shouldHandle(link.href)) return;
+    if (link.target === '_blank' || event.metaKey || event.ctrlKey || event.shiftKey) return;
+    event.preventDefault();
+    document.body.classList.add('page-transitioning');
+    setTimeout(() => location.href = link.href, 420);
+  });
+
+  const prefetched = new Set();
+  const prefetch = url => {
+    if (prefetched.has(url)) return;
+    prefetched.add(url);
+    fetch(url, { credentials: 'same-origin' }).catch(() => {});
+  };
+
+  document.body.addEventListener('mouseover', event => {
+    const link = event.target.closest('a');
+    if (link?.href && shouldHandle(link.href)) prefetch(link.href);
+  }, { passive: true });
+})();
+
+/* ── RADAR CHART RENDERER ── */
+(function () {
+  const radarChart = document.getElementById('compareRadarChart');
+  const radarArea = document.getElementById('radarArea');
+  if (!radarChart || !radarArea) return;
+
+  const render = (speed = 0.7, sensor = 0.8, comfort = 0.75, wireless = 0.5) => {
+    const cx = 140, cy = 140, radius = 100;
+    const angles = [0, Math.PI / 2, Math.PI, (3 * Math.PI) / 2];
+    const values = [speed, sensor, comfort, wireless];
+    const points = values.map((val, i) => {
+      const x = cx + Math.cos(angles[i] - Math.PI / 2) * radius * val;
+      const y = cy + Math.sin(angles[i] - Math.PI / 2) * radius * val;
+      return [x, y];
+    });
+    const pathData = `M ${points[0][0]} ${points[0][1]} L ${points[1][0]} ${points[1][1]} L ${points[2][0]} ${points[2][1]} L ${points[3][0]} ${points[3][1]} Z`;
+    radarArea.setAttribute('d', pathData);
+  };
+
+  render(0.72, 0.85, 0.78, 0.55);
+  document.getElementById('regenRadarBtn')?.addEventListener('click', () => {
+    render(Math.random() * 0.4 + 0.6, Math.random() * 0.3 + 0.7, Math.random() * 0.35 + 0.65, Math.random() * 0.5 + 0.3);
+  });
 })();
 
 
