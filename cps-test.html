@@ -397,8 +397,8 @@
       }
 
       function updateStats() {
-        const elapsedSeconds = Math.max(state.elapsed / 1000, 0.001);
-        const currentCps = state.clicks / elapsedSeconds;
+        const totalSeconds = Math.max(state.currentTime, 0.001);
+        const currentCps = state.clicks / totalSeconds;
         liveEl.textContent = currentCps.toFixed(1);
         avgEl.textContent = currentCps.toFixed(1);
         timeEl.textContent = Math.max(0, (state.duration - state.elapsed) / 1000).toFixed(3);
@@ -504,7 +504,7 @@
         state.running = false;
         state.finished = true;
         restartButton.disabled = false;
-        const totalSeconds = Math.max(state.elapsed / 1000, 0.001);
+        const totalSeconds = Math.max(state.currentTime, 0.001);
         const currentCps = state.clicks / totalSeconds;
         clickArea.innerHTML = `<span>${currentCps.toFixed(2)} CPS</span><small>Run complete</small>`;
         finalEl.textContent = `${currentCps.toFixed(2)} CPS`;
@@ -542,7 +542,7 @@
         state.startTime = performance.now();
         state.elapsed = 0;
         setOverlayVisible(false);
-        clickArea.innerHTML = '<span>Clicking…</span><small>Keep your rhythm steady</small>';
+        clickArea.innerHTML = '<span>0</span><small>Clicks</small>';
         updateStats();
         if (state.realisticMode) {
           startMovement();
@@ -559,6 +559,7 @@
           return;
         }
         state.clicks += 1;
+        clickArea.innerHTML = `<span>${state.clicks}</span><small>Clicks</small>`;
         updateStats();
       });
 

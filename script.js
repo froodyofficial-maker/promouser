@@ -16,7 +16,7 @@
     const maskIcon = document.createElement('link');
     maskIcon.rel = 'mask-icon';
     maskIcon.href = favicon;
-    maskIcon.color = '#e8ff00';
+    maskIcon.color = '#ff2d55';
     document.head.appendChild(maskIcon);
   }
   if (!document.querySelector('meta[name="theme-color"]')) {
@@ -288,7 +288,7 @@
       ripple.style.cssText = `
         position: absolute;
         border-radius: 50%;
-        background: rgba(232,255,0,0.2);
+        background: rgba(255,45,85,0.22);
         width: 10px; height: 10px;
         left: ${e.offsetX - 5}px;
         top:  ${e.offsetY - 5}px;
