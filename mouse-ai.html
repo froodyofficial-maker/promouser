@@ -76,122 +76,89 @@
 
 
   <main>
-    <section class="about-section" id="hero">
-      <div class="container about-grid">
-        <div class="about-text reveal">
-          <span class="section-label">ProMouser</span>
-          <h2>Get a personalized recommendation in seconds.</h2>
-          <p>Recommendation Assistant helps you narrow your search by grip, budget, and game type so you can focus on the mice that are most likely to work for you.</p>
-          <div class="hero-cta">
-            <a href="mice.html" class="btn btn-primary">Explore Mice</a>
-            <a href="tests.html" class="btn btn-ghost">Check the tools</a>
-          </div>
-        </div>
-        <div class="about-cards reveal">
-          <div class="feature-card">
-            <div class="fc-icon" data-icon="Focus"></div>
-            <h4>Built for your setup</h4>
-            <p>Every page is tuned to help you choose the right mouse and improve your daily performance.</p>
-          </div>
-          <div class="feature-card">
-            <div class="fc-icon" data-icon="Speed"></div>
-            <h4>Fast and focused</h4>
-            <p>Clean navigation, lightweight pages, and practical guides that get to the point quickly.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="about-section">
-      <div class="container about-grid">
-        <div class="about-text reveal">
-          <span class="section-label">AI-powered recommendation</span>
-          <h2>Answer a few questions and narrow your shortlist</h2>
-          <p>If you are unsure between a budget mouse, a wireless option, or a higher-end sensor, use the AI page as your starting point. It helps you match your hand style and games to a shortlist you can compare.</p>
-          <p>Use it together with the hand-grip guide and mouse tips to turn a personalized recommendation into a smarter purchase.</p>
-        </div>
-        <div class="about-cards reveal">
-          <div class="feature-card">
-            <div class="fc-icon" data-icon="Guide"></div>
-            <h4>Budget</h4>
-            <p>Quickly filter by your target price so the recommendation stays realistic.</p>
-          </div>
-          <div class="feature-card">
-            <div class="fc-icon" data-icon="Games"></div>
-            <h4>Game style</h4>
-            <p>Match the mouse to your main games, from FPS to strategy and everyday work.</p>
-          </div>
-          <div class="feature-card">
-            <div class="fc-icon" data-icon="Grip"></div>
-            <h4>Grip preference</h4>
-            <p>Use palm, claw, or fingertip guidance so the results align with your comfort.</p>
-          </div>
-          <div class="feature-card">
-            <div class="fc-icon" data-icon="Search"></div>
-            <h4>Find the right fit</h4>
-            <p>Use the recommendation as your first pass before comparing actual product details.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="about-section" id="assistant">
-      <div class="container section-header reveal">
-        <span class="section-label">Recommendation assistant</span>
-        <h2>Get a short, practical recommendation</h2>
-        <p>Describe your grip, budget, and main games. This tool provides a starting shortlist and the next pages to review.</p>
-      </div>
+      <div class="container assistant-shell reveal">
+        <div class="assistant-header">
+          <span class="section-label">ProMouser AI</span>
+          <h2>Mouse recommendation chat</h2>
+          <p>Ask questions, compare mice, and get answers grounded in the ProMouser review pages.</p>
+        </div>
 
-      <div class="container assistant-grid">
-        <div class="assistant-card reveal">
+        <div class="assistant-compare" aria-labelledby="assistantCompareTitle">
+          <div>
+            <span class="section-label">Compare</span>
+            <h3 id="assistantCompareTitle">Put two mice head-to-head</h3>
+          </div>
+          <div class="assistant-compare-controls">
+            <label>
+              <span>First mouse</span>
+              <select id="assistantCompareFirst">
+                <option value="Logitech G502 Hero">Logitech G502 Hero</option>
+                <option value="Razer DeathAdder V3">Razer DeathAdder V3</option>
+                <option value="Glorious Model O">Glorious Model O</option>
+                <option value="Logitech Superlight Pro X">Logitech Superlight Pro X</option>
+                <option value="Razer Cobra">Razer Cobra</option>
+              </select>
+            </label>
+            <span class="assistant-compare-vs" aria-hidden="true">vs</span>
+            <label>
+              <span>Second mouse</span>
+              <select id="assistantCompareSecond">
+                <option value="Razer DeathAdder V3">Razer DeathAdder V3</option>
+                <option value="Logitech G502 Hero">Logitech G502 Hero</option>
+                <option value="Glorious Model O">Glorious Model O</option>
+                <option value="Logitech Superlight Pro X">Logitech Superlight Pro X</option>
+                <option value="Razer Cobra">Razer Cobra</option>
+              </select>
+            </label>
+            <button class="btn btn-primary" id="assistantCompareButton" type="button">Compare mice</button>
+          </div>
+          <div class="assistant-compare-preview" aria-live="polite">
+            <article class="assistant-mouse-card">
+              <div class="assistant-mouse-image"><img id="assistantCompareImageFirst" src="assets/images/mice/logitech-g502-hero.png" alt="Logitech G502 Hero"></div>
+              <div class="assistant-mouse-card-content">
+                <span class="compare-tag">First pick</span>
+                <h4 id="assistantCompareNameFirst">Logitech G502 Hero</h4>
+                <p id="assistantCompareReasonFirst">Large ergonomic shape and many programmable buttons, with a heavier feel.</p>
+                <div class="assistant-mouse-facts" id="assistantCompareFactsFirst"></div>
+              </div>
+            </article>
+            <div class="assistant-compare-divider" aria-hidden="true">VS</div>
+            <article class="assistant-mouse-card">
+              <div class="assistant-mouse-image"><img id="assistantCompareImageSecond" src="assets/images/mice/razer-deathadder-v3.png" alt="Razer DeathAdder V3"></div>
+              <div class="assistant-mouse-card-content">
+                <span class="compare-tag">Second pick</span>
+                <h4 id="assistantCompareNameSecond">Razer DeathAdder V3</h4>
+                <p id="assistantCompareReasonSecond">Ergonomic right-handed shell, very low weight, and strong tracking for aim-heavy play.</p>
+                <div class="assistant-mouse-facts" id="assistantCompareFactsSecond"></div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="assistant-chat" id="assistantChat">
+          <div class="chat-messages" id="chatMessages" aria-live="polite">
+            <div class="message bot">
+              <div class="bubble">
+                Hey — I’m checking the ProMouser mouse pages as I answer. Tell me your grip, budget, games, or ask me about a specific mouse.
+              </div>
+            </div>
+          </div>
+
+          <div class="quick-prompts">
+            <button type="button" class="quick-prompt" data-prompt="I play FPS and I want a claw grip mouse under $100.">FPS + claw</button>
+            <button type="button" class="quick-prompt" data-prompt="I need a comfortable palm grip mouse for Minecraft and long sessions.">Minecraft + palm</button>
+            <button type="button" class="quick-prompt" data-prompt="I want a lightweight fingertip mouse for competitive games and premium feel.">Fingertip + premium</button>
+            <button type="button" class="quick-prompt" data-prompt="I am not sure about my grip. Help me choose a mouse for gaming and work.">Help me choose</button>
+          </div>
+
           <form class="assistant-form" id="assistantForm">
-            <div class="assistant-row">
-              <label for="assistantGrip">Grip</label>
-              <select id="assistantGrip" required>
-                <option value="" selected disabled>Select</option>
-                <option value="palm">Palm</option>
-                <option value="claw">Claw</option>
-                <option value="fingertip">Fingertip</option>
-                <option value="unsure">Not sure</option>
-              </select>
-            </div>
-            <div class="assistant-row">
-              <label for="assistantBudget">Budget</label>
-              <select id="assistantBudget" required>
-                <option value="" selected disabled>Select</option>
-                <option value="budget">Budget</option>
-                <option value="mid">Mid-range</option>
-                <option value="premium">Premium</option>
-              </select>
-            </div>
-            <div class="assistant-row">
-              <label for="assistantGames">Main use</label>
-              <select id="assistantGames" required>
-                <option value="" selected disabled>Select</option>
-                <option value="fps">FPS</option>
-                <option value="minecraft">Minecraft</option>
-                <option value="mixed">Mixed</option>
-                <option value="work">Work and productivity</option>
-              </select>
-            </div>
-            <button class="btn btn-primary" type="submit">Generate recommendation</button>
+            <input id="assistantInput" type="text" placeholder="Tell me your games, grip, budget, or comfort needs..." aria-label="Ask about a mouse" autocomplete="off" />
+            <button class="btn btn-primary" type="submit">Send</button>
           </form>
-
-          <div class="assistant-results" id="assistantResults" aria-live="polite"></div>
-          <p class="assistant-note">This is a lightweight on-page tool. If you want a live chat assistant, connect an API endpoint and we can wire it in.</p>
         </div>
       </div>
     </section>
-
-    <section class="quick-links">
-      <div class="container about-text reveal">
-        <span class="section-label">Recommended next move</span>
-        <h2>Move from recommendation to real setup</h2>
-        <p>After the AI page, check the hand-grip guide and the mouse tips page so your shortlist matches your desk setup and hand comfort.</p>
-        <a href="hand-grip.html" class="btn btn-outline">Open hand-grip guide</a>
-      </div>
-    </section>
-
   </main>
 
   <footer class="site-footer">
@@ -232,53 +199,318 @@
   <script>
     (function () {
       const form = document.getElementById('assistantForm');
-      const results = document.getElementById('assistantResults');
-      if (!form || !results) return;
+      const input = document.getElementById('assistantInput');
+      const chatMessages = document.getElementById('chatMessages');
+      const quickPrompts = document.querySelectorAll('.quick-prompt');
+      const compareFirst = document.getElementById('assistantCompareFirst');
+      const compareSecond = document.getElementById('assistantCompareSecond');
+      const compareButton = document.getElementById('assistantCompareButton');
+      const comparePreview = {
+        first: {
+          image: document.getElementById('assistantCompareImageFirst'),
+          name: document.getElementById('assistantCompareNameFirst'),
+          reason: document.getElementById('assistantCompareReasonFirst'),
+          facts: document.getElementById('assistantCompareFactsFirst')
+        },
+        second: {
+          image: document.getElementById('assistantCompareImageSecond'),
+          name: document.getElementById('assistantCompareNameSecond'),
+          reason: document.getElementById('assistantCompareReasonSecond'),
+          facts: document.getElementById('assistantCompareFactsSecond')
+        }
+      };
+      if (!form || !input || !chatMessages) return;
 
-      function buildRecommendation({ grip, budget, games }) {
-        const picks = [];
-        if (games === 'minecraft') picks.push('Start with the Minecraft mice list and prioritize consistent clicks and comfort.');
-        if (games === 'fps') picks.push('Start with the FPS mice list and prioritize weight, shape, and sensor performance.');
-        if (games === 'work') picks.push('Prioritize comfort, reliability, and a shape you can use for long sessions.');
-        if (games === 'mixed') picks.push('Choose a balanced shape and weight before optimizing for a single game.');
+      const makeMessage = (who, text) => {
+        const wrap = document.createElement('div');
+        wrap.className = `message ${who}`;
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        if (who === 'bot') {
+          const comparisonBlocks = text.split('\n\n');
+          if (comparisonBlocks.length >= 5 && comparisonBlocks[0].includes(' vs ') && comparisonBlocks.some(block => block.startsWith('What separates them:'))) {
+            const title = document.createElement('strong');
+            title.className = 'comparison-title';
+            title.textContent = comparisonBlocks[0];
+            bubble.appendChild(title);
 
-        if (grip === 'unsure') picks.push('Use the hand-grip guide first to confirm which grip feels natural.');
-        else picks.push(`Focus on shapes that suit a ${grip} grip.`);
+            [1, 2].forEach(index => {
+              const block = comparisonBlocks[index];
+              const card = document.createElement('article');
+              card.className = 'comparison-mouse-box';
+              const lines = block.split('\n');
+              const heading = document.createElement('h4');
+              heading.textContent = lines.shift();
+              card.appendChild(heading);
+              const specs = document.createElement('span');
+              specs.className = 'comparison-specs';
+              specs.textContent = lines.shift() || '';
+              card.appendChild(specs);
+              const details = document.createElement('p');
+              details.textContent = lines.join(' ');
+              card.appendChild(details);
+              bubble.appendChild(card);
+            });
 
-        if (budget === 'budget') picks.push('Shortlist value-focused models and avoid paying for features you will not use.');
-        if (budget === 'mid') picks.push('Look for proven sensors and solid build quality without premium add-ons.');
-        if (budget === 'premium') picks.push('Prioritize top-tier sensors, low weight, and long-term comfort.');
+            comparisonBlocks.slice(3).forEach(block => {
+              const card = document.createElement('div');
+              card.className = block.startsWith('Verdict:') ? 'comparison-verdict-box' : 'comparison-insight-box';
+              const separator = block.indexOf(':');
+              if (separator > -1) {
+                const heading = document.createElement('strong');
+                heading.textContent = block.slice(0, separator + 1);
+                card.appendChild(heading);
+                const details = document.createElement('p');
+                details.textContent = block.slice(separator + 1).trim();
+                card.appendChild(details);
+              } else {
+                card.textContent = block;
+              }
+              bubble.appendChild(card);
+            });
+          } else {
+            comparisonBlocks.forEach((paragraph, index) => {
+            const block = document.createElement(index === 0 ? 'strong' : 'p');
+            block.textContent = paragraph;
+            bubble.appendChild(block);
+            });
+          }
+        } else {
+          bubble.textContent = text;
+        }
+        wrap.appendChild(bubble);
+        chatMessages.appendChild(wrap);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      };
 
-        const links = [
-          { href: 'mice.html', label: 'Browse mice' },
-          { href: 'hand-grip.html', label: 'Hand grip guide' },
-          { href: 'mouse-tips.html', label: 'Mouse tips' },
-          { href: 'tests.html', label: 'Tools and tests' },
-        ];
-        if (games === 'minecraft') links.unshift({ href: 'mice/minecraft.html', label: 'Minecraft mice' });
-        if (games === 'fps') links.unshift({ href: 'mice/first-person-shooters.html', label: 'FPS mice' });
+      const mouseCatalog = [
+        { name: 'Razer DeathAdder V3', aliases: ['deathadder', 'deathadder v3'], page: 'mice/razer-deathadder-v3.html', grips: ['palm', 'claw'], games: ['fps', 'minecraft'], weight: 59, connection: 'wired', price: 'mid', buttons: 6, comfort: 5, speed: 5, reason: 'ergonomic right-handed shell, very low weight, and strong tracking for aim-heavy play.' },
+        { name: 'Logitech Superlight Pro X', aliases: ['superlight', 'g pro x', 'pro x'], page: 'mice/logitech-superlight-pro-x.html', grips: ['claw', 'fingertip'], games: ['fps', 'work'], weight: 63, connection: 'wireless', price: 'premium', buttons: 5, comfort: 4, speed: 5, reason: 'light symmetrical shape and wireless freedom for controlled competitive movement.' },
+        { name: 'Glorious Model O', aliases: ['model o', 'model-o'], page: 'mice/glorious-model-o.html', grips: ['claw', 'fingertip'], games: ['fps', 'minecraft'], weight: 67, connection: 'wired', price: 'budget', buttons: 6, comfort: 3, speed: 5, reason: 'lightweight shell and quick handling for claw or fingertip users.' },
+        { name: 'Razer Cobra', aliases: ['cobra'], page: 'mice/razer-cobra.html', grips: ['claw', 'fingertip'], games: ['fps', 'minecraft', 'work'], weight: 58, connection: 'wired', price: 'budget', buttons: 6, comfort: 3, speed: 4, reason: 'compact shape and low weight for fast repositioning and fingertip control.' },
+        { name: 'Logitech G502 Hero', aliases: ['g502', 'g502 hero'], page: 'mice/logitech-g502-hero.html', grips: ['palm', 'claw'], games: ['minecraft', 'work', 'fps'], weight: 121, connection: 'wired', price: 'mid', buttons: 11, comfort: 5, speed: 2, reason: 'large ergonomic shape and many programmable buttons, with a heavier feel.' }
+      ];
 
-        return { picks, links };
+      function renderComparePreview() {
+        [compareFirst?.value, compareSecond?.value].forEach((name, index) => {
+          const mouse = mouseCatalog.find(item => item.name === name);
+          const card = comparePreview[index === 0 ? 'first' : 'second'];
+          if (!mouse || !card.image) return;
+          const imageName = mouse.page.split('/').pop().replace('.html', '');
+          card.image.src = `assets/images/mice/${imageName}.png`;
+          card.image.alt = mouse.name;
+          card.name.textContent = mouse.name;
+          card.reason.textContent = mouse.reason;
+          card.facts.innerHTML = `<span>${mouse.weight}g</span><span>${mouse.connection}</span><span>${mouse.buttons} buttons</span>`;
+        });
       }
 
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const grip = document.getElementById('assistantGrip').value;
-        const budget = document.getElementById('assistantBudget').value;
-        const games = document.getElementById('assistantGames').value;
-        const { picks, links } = buildRecommendation({ grip, budget, games });
+      const session = { preferences: {}, lastPrompt: '' };
+      const pageContext = new Map();
+      let pageContextReady;
 
-        results.innerHTML = `
-          <div class="assistant-results-inner">
-            <h3>Recommendation</h3>
-            <ul>${picks.map((p) => `<li>${p}</li>`).join('')}</ul>
-            <h3>Next pages</h3>
-            <div class="assistant-links">
-              ${links.map((l) => `<a class="btn btn-outline" href="${l.href}">${l.label}</a>`).join('')}
-            </div>
-          </div>
-        `;
+      const normalize = value => value.toLowerCase()
+        .replace(/fingertip|finger-tip|finger tip/g, ' fingertip ')
+        .replace(/wireless|cordless|no[- ]cable/g, ' wireless ')
+        .replace(/valorent|valarante|val/g, ' valorant ')
+        .replace(/mine craft|minecrfat/g, ' minecraft ')
+        .replace(/ergonomic|ergo/g, ' comfort ')
+        .replace(/fps games?|first[- ]person shooters?/g, ' fps ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      const hasAny = (text, words) => words.some(word => text.includes(word));
+
+      function detectIntent(prompt) {
+        const lower = normalize(prompt);
+        if (hasAny(lower, ['compare', 'difference', 'versus', ' vs ', 'which one'])) return 'compare';
+        if (hasAny(lower, ['click', 'cps', 'butterfly', 'jitter', 'drag click', 'debounce'])) return 'clicking';
+        if (hasAny(lower, ['sensor', 'dpi', 'polling', 'hz', 'latency', 'input delay'])) return 'performance';
+        if (hasAny(lower, ['what is grip', 'which grip', 'explain grip', 'how do i hold', 'hand position', 'identify my grip'])) return 'grip';
+        if (hasAny(lower, ['recommend', 'suggest', 'best mouse', 'which mouse', 'buy', 'choose', 'need a mouse', 'looking for'])) return 'recommend';
+        if (hasAny(lower, ['grip', 'palm grip', 'claw grip', 'fingertip'])) return 'grip';
+        return 'recommend';
+      }
+
+      function analyze(prompt) {
+        const lower = normalize(prompt);
+        const grip = /fingertip/.test(lower) ? 'fingertip' : /claw/.test(lower) ? 'claw' : /palm|flat hand/.test(lower) ? 'palm' : null;
+        const games = /minecraft|bedwars|skywars|building|pvp/.test(lower) ? 'minecraft' : /valorant|counter[- ]strike|cs2|aim trainer|overwatch|apex|fortnite| fps /.test(lower) ? 'fps' : /work|office|productivity|coding|school|editing/.test(lower) ? 'work' : 'mixed';
+        const priceMatch = lower.match(/(?:under|below|max(?:imum)?|around|less than)\s*\$?\s*(\d{2,3})/);
+        const price = priceMatch ? Number(priceMatch[1]) : null;
+        const budget = price !== null ? (price < 80 ? 'budget' : price >= 160 ? 'premium' : 'mid') : lower.includes('premium') ? 'premium' : lower.includes('budget') || lower.includes('cheap') ? 'budget' : 'mid';
+        const wireless = /wireless/.test(lower) ? true : /wired|cable/.test(lower) ? false : null;
+        const comfort = /comfort|comfortable|hand pain|wrist|long session|ergo|ergonomic/.test(lower);
+        const light = /lightweight|light mouse|fast|speed|flick|low weight/.test(lower);
+        const handSize = /small hand|small hands/.test(lower) ? 'small' : /large hand|big hand|large hands/.test(lower) ? 'large' : null;
+        return { grip, games, budget, price, wireless, comfort, light, handSize };
+      }
+
+      function scoreMouse(mouse, preferences) {
+        let score = 0;
+        if (preferences.grip) score += mouse.grips.includes(preferences.grip) ? 34 : 0;
+        else score += 12;
+        score += mouse.games.includes(preferences.games) ? 26 : preferences.games === 'mixed' ? 14 : 5;
+        score += mouse.price === preferences.budget ? 18 : 0;
+        if (preferences.wireless !== null) score += (preferences.wireless === (mouse.connection === 'wireless')) ? 14 : 0;
+        else score += 7;
+        if (preferences.comfort) score += mouse.comfort * 2;
+        if (preferences.light) score += mouse.speed * 2;
+        return score;
+      }
+
+      function findMentionedMice(prompt) {
+        const lower = normalize(prompt);
+        return mouseCatalog.filter(mouse =>
+          mouse.aliases.some(alias => lower.includes(alias)) || lower.includes(mouse.name.toLowerCase())
+        );
+      }
+
+      function getPageFacts(mouse) {
+        return pageContext.get(mouse.name) || {
+          title: mouse.name,
+          facts: [],
+          summary: mouse.reason
+        };
+      }
+
+      function pageReply(prompt) {
+        const mentioned = findMentionedMice(prompt);
+        if (mentioned.length !== 1) return '';
+
+        const mouse = mentioned[0];
+        const context = getPageFacts(mouse);
+        const facts = context.facts.slice(0, 4);
+        const detail = facts.length ? facts.join('\n\n') : context.summary;
+        return `${mouse.name}, from its ProMouser page:\n\n${detail}\n\nMy read: ${context.summary} Read the full page before buying, especially for shape and hand-size fit: ${mouse.page}`;
+      }
+
+      async function loadPageContext() {
+        await Promise.all(mouseCatalog.map(async mouse => {
+          try {
+            const response = await fetch(mouse.page);
+            if (!response.ok) return;
+            const document = new DOMParser().parseFromString(await response.text(), 'text/html');
+            const main = document.querySelector('main');
+            if (!main) return;
+
+            const title = document.querySelector('h1, h2')?.textContent.trim() || mouse.name;
+            const facts = Array.from(main.querySelectorAll('h4, p'))
+              .map(element => element.textContent.replace(/\s+/g, ' ').trim())
+              .filter(text => text.length > 35 && !/^offer price/i.test(text))
+              .slice(0, 10);
+            const summary = Array.from(main.querySelectorAll('h2 + p, h1 + p, .about-text > p'))
+              .map(element => element.textContent.replace(/\s+/g, ' ').trim())
+              .find(text => text.length > 45) || mouse.reason;
+            pageContext.set(mouse.name, { title, facts, summary });
+          } catch (error) {
+            // Keep the local catalog usable when opened without a web server.
+          }
+        }));
+      }
+
+      function specialistReply(prompt) {
+        const lower = normalize(prompt);
+        if (detectIntent(prompt) === 'grip') {
+          return 'Grip guide:\n\nPalm: most of your hand rests on the shell. Choose a fuller ergonomic shape for comfort.\n\nClaw: your palm touches the rear while your fingers arch. A medium, shorter mouse usually gives better control.\n\nFingertip: only your fingertips touch the mouse. A smaller, lighter shape gives you more freedom.\n\nQuick test: relax your hand on the mouse. The grip that happens naturally is usually the right starting point; do not force a grip because it is popular.';
+        }
+        if (detectIntent(prompt) === 'clicking') {
+          if (lower.includes('cps')) return 'For CPS, the timer matters: CPS = total clicks divided by the selected test duration. Higher CPS does not automatically mean a better mouse. Prioritize consistent clicks, low debounce, and a shape you can control without pain.';
+          return 'Clicking advice:\n\nButterfly and jitter clicking depend heavily on switch feel and debounce settings. Drag clicking also depends on the shell surface and switch behavior. A mouse advertised for clicking is not automatically better for aiming, so choose based on your main use and avoid techniques that cause hand pain.';
+        }
+        if (detectIntent(prompt) === 'performance') {
+          return 'Performance advice:\n\nDPI is sensitivity, not accuracy. Start around 800 DPI and tune in-game sensitivity to what feels controllable. A modern sensor should track reliably; polling rate can reduce motion delay, but it will not fix an uncomfortable shape or poor aim habits. Weight, grip, surface, and comfort matter more than chasing the highest number.';
+        }
+        return '';
+      }
+
+      function compareReply(prompt) {
+        const found = findMentionedMice(prompt);
+        if (found.length < 2) return 'I can compare two mice directly. Try asking something like “G502 vs Model O” or “DeathAdder vs Superlight for FPS.”';
+        const [first, second] = found;
+        const firstContext = getPageFacts(first);
+        const secondContext = getPageFacts(second);
+        const firstFacts = firstContext.facts.slice(0, 5).join('\n');
+        const secondFacts = secondContext.facts.slice(0, 5).join('\n');
+        const lighter = first.weight <= second.weight ? first : second;
+        const comfortPick = first.comfort === second.comfort ? null : first.comfort > second.comfort ? first : second;
+        const wirelessPick = first.connection === 'wireless' ? first : second.connection === 'wireless' ? second : null;
+
+        return `${first.name} vs ${second.name}\n\n` +
+          `${first.name}\n${first.weight}g | ${first.connection} | ${first.buttons} buttons\n${firstFacts || first.reason}\n\n` +
+          `${second.name}\n${second.weight}g | ${second.connection} | ${second.buttons} buttons\n${secondFacts || second.reason}\n\n` +
+          `What separates them:\n${lighter.name} is the lighter option for faster swipes and less movement resistance. ` +
+          (comfortPick ? `${comfortPick.name} is the safer comfort-first choice based on its shape and ProMouser review. ` : 'They score similarly for comfort, so shape and hand size should decide. ') +
+          (wirelessPick ? `${wirelessPick.name} is the wireless choice, while the other mouse uses a cable.` : 'Both mice are wired, so shape and weight matter more than connection.') +
+          `\n\nVerdict: choose ${first.name} for ${first.weight < second.weight ? 'lighter, faster movement' : 'its extra controls and heavier feel'}; choose ${second.name} for ${second.weight < first.weight ? 'lighter, faster movement' : 'its extra controls and heavier feel'}. For FPS, favor the lighter option; for long sessions, compare the shape against your hand. Your natural grip should break the tie.`;
+      }
+
+      function buildReply(prompt) {
+        const intent = detectIntent(prompt);
+        if (intent === 'compare') return compareReply(prompt);
+        const pageDetails = pageReply(prompt);
+        if (pageDetails) return pageDetails;
+        const specialist = specialistReply(prompt);
+        if (specialist) return specialist;
+        const preferences = analyze(prompt);
+        session.preferences = { ...session.preferences, ...Object.fromEntries(Object.entries(preferences).filter(([, value]) => value !== null)) };
+        const ranked = mouseCatalog.map(mouse => ({ mouse, score: scoreMouse(mouse, preferences) })).sort((a, b) => b.score - a.score);
+        const best = ranked[0].mouse;
+        const alternatives = ranked.slice(1, 3).map(item => item.mouse);
+        const gameLabel = preferences.games === 'fps' ? 'FPS' : preferences.games === 'minecraft' ? 'Minecraft' : preferences.games === 'work' ? 'work' : 'mixed use';
+        const gripLabel = preferences.grip || 'your current grip';
+        const bestContext = getPageFacts(best);
+        const lines = [`Best match: ${best.name}`, `For ${gameLabel} and ${gripLabel}, I’d start here because its ProMouser page says: ${bestContext.summary}`];
+        if (preferences.price !== null && best.price !== preferences.budget) lines.push(`Budget check: this is a ${best.price}-tier option, so it may be above your stated $${preferences.price} limit. I’m showing it because your other requirement is harder to satisfy; the ${alternatives[0].name} is the safer budget choice.`);
+        if (preferences.wireless === true && best.connection !== 'wireless') lines.push('One important catch: you asked for wireless, but this best shape match is wired. Choose the Superlight Pro X instead if a cable is a deal-breaker.');
+        if (preferences.wireless === false && best.connection === 'wireless') lines.push('One important catch: this pick is wireless. Choose the Model O or Razer Cobra if you specifically want wired.');
+        const alternativeContext = getPageFacts(alternatives[0]);
+        lines.push(`Also consider: ${alternatives[0].name} — ${alternativeContext.summary}`);
+        lines.push(`Tradeoff: ${best.weight}g, ${best.connection}, and ${best.buttons} buttons. Check the shape and dimensions before buying; grip labels are a starting point, not a guarantee.`);
+        if (!preferences.grip) lines.push('To narrow this further, tell me whether your palm, fingers, or fingertips stay in contact with the mouse, and your hand size if you know it.');
+        return lines.join('\n\n');
+      }
+
+      const submitPrompt = async (value) => {
+        const text = (value || '').trim();
+        await pageContextReady;
+        if (!text) {
+          makeMessage('user', 'Give me a mouse recommendation.');
+          makeMessage('bot', buildReply('I want a balanced mouse for gaming and comfort.'));
+          return;
+        }
+
+        makeMessage('user', text);
+        makeMessage('bot', buildReply(text));
+        session.lastPrompt = text;
+      };
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        submitPrompt(input.value);
+        input.value = '';
       });
+
+      quickPrompts.forEach((button) => {
+        button.addEventListener('click', () => {
+          const prompt = button.dataset.prompt || '';
+          submitPrompt(prompt);
+        });
+      });
+
+      compareButton?.addEventListener('click', () => {
+        if (!compareFirst || !compareSecond || compareFirst.value === compareSecond.value) {
+          makeMessage('bot', 'Choose two different mice and I’ll compare them side by side.');
+          return;
+        }
+        submitPrompt(`Compare ${compareFirst.value} vs ${compareSecond.value}. Which one is better for FPS, comfort, and everyday use?`);
+      });
+
+      compareFirst?.addEventListener('change', renderComparePreview);
+      compareSecond?.addEventListener('change', renderComparePreview);
+      renderComparePreview();
+
+      pageContextReady = loadPageContext();
     })();
   </script>
 

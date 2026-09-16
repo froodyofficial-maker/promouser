@@ -122,6 +122,8 @@
   const hamburger = document.getElementById('hamburger');
   const navLinks  = document.getElementById('navLinks');
   if (!hamburger || !navLinks) return;
+  hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.setAttribute('aria-controls', 'navLinks');
 
   hamburger.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('open');
@@ -136,6 +138,7 @@
       navLinks.classList.remove('open');
       hamburger.classList.remove('open');
       document.body.style.overflow = '';
+      hamburger.setAttribute('aria-expanded', 'false');
     });
   });
 })();
@@ -337,17 +340,29 @@
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   if (!sections.length || !navLinks.length) return;
+  const pagePath = location.pathname.split('/').pop() || 'index.html';
+  const pageLinks = Array.from(navLinks).filter(link => {
+    const href = link.getAttribute('href') || '';
+    return !href.startsWith('#') && href.split('#')[0].split('/').pop() === pagePath;
+  });
+  const hasSectionLinks = Array.from(sections).some(section => Array.from(navLinks).some(link => {
+    return (link.getAttribute('href') || '').endsWith(`#${section.id}`);
+  }));
+  if (!hasSectionLinks) return;
 
   const observer = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          const sectionLinks = Array.from(navLinks).filter(link => (link.getAttribute('href') || '').endsWith(`#${sectionId}`));
+          if (!sectionLinks.length && pageLinks.length) return;
           navLinks.forEach(link => {
             const href = link.getAttribute('href') || '';
             link.classList.toggle(
               'active',
-              href.includes(`#${entry.target.id}`) ||
-              (entry.target.id === 'hero' && href.endsWith('index.html'))
+              href.endsWith(`#${sectionId}`) ||
+              (!sectionLinks.length && pageLinks.includes(link))
             );
           });
         }
@@ -406,6 +421,11 @@
 
   const overlay = document.getElementById('searchOverlay');
   const input = document.getElementById('searchInput');
+  const searchButton = document.getElementById('navSearchBtn');
+  const closeSearch = document.getElementById('closeSearch');
+  overlay?.setAttribute('role', 'dialog');
+  overlay?.setAttribute('aria-modal', 'true');
+  overlay?.setAttribute('aria-label', 'Search ProMouser');
   if (overlay && input) {
     const resultsHost = createSearchHost(overlay);
     const links = Array.from(document.querySelectorAll('a[href]'))
@@ -418,7 +438,8 @@
         url: link.getAttribute('href'),
         description: link.dataset.search || '',
         text: normalize(link.textContent.trim()),
-      }));
+      }))
+      .filter((item, index, items) => items.findIndex(candidate => candidate.url === item.url) === index);
 
     const index = new SearchIndex(links);
     let activeResult = -1;
@@ -475,6 +496,7 @@
     overlay.addEventListener('animationend', () => {
       if (overlay.classList.contains('open')) input.focus();
     });
+    closeSearch?.addEventListener('click', () => searchButton?.focus());
 
     executeSearch('');
   }
@@ -499,7 +521,14 @@
     #state = { game: 'fps', grip: 'claw', weight: 'balanced', connection: 'any' };
     #root;
     #elements = {};
-    #rowMap = new Map([['use', 'use'], ['grip', 'grip'], ['weight', 'weight'], ['sensor', 'sensor'], ['connection', 'connection']]);
+    #rowMap = new Map([
+      ['use', 'gameScore'],
+      ['grip', 'gripScore'],
+      ['weight', 'weightScore'],
+      ['sensor', 'gameScore'],
+      ['connection', 'connectionScore'],
+      ['specialty', 'specialtyScore']
+    ]);
 
     constructor(root) {
       super();
@@ -624,16 +653,10 @@
       this.#elements.connectionMatch.textContent = `${memo.format(connectionMatch)}%`;
       this.#elements.sensorMatch.textContent = `${memo.format(sensorMatch)}%`;
 
-      this.#rowMap.forEach((feature, property) => {
+      this.#rowMap.forEach((scoreProperty, feature) => {
         const row = this.#root.querySelector(`[data-feature="${feature}"]`);
         if (!row) return;
-        const isMatch = property === 'weight'
-          ? winner.details.weightScore > 0.65
-          : property === 'connection'
-            ? winner.details.connectionScore > 0.7
-            : property === 'sensor'
-              ? winner.details.gameScore > 0.7
-              : winner.details[`${property}Score`]?.toFixed !== undefined;
+        const isMatch = winner.details[scoreProperty] > 0.7;
         row.classList.toggle('highlight', isMatch);
       });
     }
