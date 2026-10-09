@@ -56,4 +56,4 @@ Please review [SECURITY.md](SECURITY.md) before reporting a vulnerability.
 
 ## License
 
-ProMouser is available under the [MIT License](LICENSE).
+ProMouser is dedicated to the public domain under [CC0 1.0 Universal](LICENSE).
