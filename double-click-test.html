@@ -8,6 +8,24 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    .double-click-test-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(240px,.8fr);gap:24px;align-items:stretch}
+    .double-click-test-panel,.double-click-info{padding:clamp(20px,4vw,36px);border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface)}
+    .double-click-target{display:flex;width:100%;min-height:280px;align-items:center;justify-content:center;border:2px solid var(--accent);border-radius:var(--radius-lg);background:var(--bg-2);color:var(--text);font:700 clamp(1.5rem,4vw,2.25rem) var(--font-body);cursor:pointer;user-select:none;transition:border-color .2s,transform .15s}
+    .double-click-target:hover{transform:translateY(-2px)}
+    .double-click-target:focus-visible,.double-click-retry:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+    .double-click-target[data-state="single"]{border-color:#ff4d4d}
+    .double-click-target[data-state="double"]{border-color:#35c879}
+    .double-click-info h3{margin-bottom:18px}
+    .double-click-info dl{display:grid;gap:14px}
+    .double-click-info dl div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--border);padding-bottom:12px}
+    .double-click-info dt{color:var(--text-2)}
+    .double-click-info dd{margin:0;text-align:right;font-weight:700}
+    .double-click-retry{margin-top:20px}
+    .double-click-retry[hidden]{display:none}
+    @media(max-width:700px){.double-click-test-layout{grid-template-columns:1fr}.double-click-target{min-height:220px}}
+    @media(prefers-reduced-motion:reduce){.double-click-target{transition:none}}
+  </style>
 </head>
 <body>
   <div class="announcement-bar" id="announcementBar">
@@ -135,6 +153,31 @@
       </div>
     </section>
 
+    <section class="about-section" id="click-detector">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Interactive test</span>
+          <h2>Try the <em>click detector</em>.</h2>
+          <p>Click the target twice quickly to test whether a double click is detected. A single click shows its timing; select Retry to start again.</p>
+        </div>
+        <div class="double-click-test-layout reveal">
+          <div class="double-click-test-panel">
+            <button class="double-click-target" id="doubleClickTarget" type="button" data-state="waiting">Waiting for click</button>
+            <button class="btn btn-outline double-click-retry" id="doubleClickRetry" type="button" hidden>Retry</button>
+          </div>
+          <aside class="double-click-info" aria-live="polite" aria-atomic="true">
+            <h3>Test details</h3>
+            <dl>
+              <div><dt>Click type</dt><dd id="doubleClickType">None</dd></div>
+              <div><dt>Click count</dt><dd id="doubleClickCount">0</dd></div>
+              <div><dt>Time between clicks</dt><dd id="doubleClickDiff">0 ms</dd></div>
+              <div><dt>Last click time</dt><dd id="doubleClickLastTime">—</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="quick-links">
       <div class="container about-text reveal">
         <span class="section-label">Go further</span>
@@ -182,6 +225,74 @@
   </footer>
 
 
+  <script>
+    (() => {
+      const target = document.getElementById("doubleClickTarget");
+      const retry = document.getElementById("doubleClickRetry");
+      const type = document.getElementById("doubleClickType");
+      const count = document.getElementById("doubleClickCount");
+      const diff = document.getElementById("doubleClickDiff");
+      const lastTime = document.getElementById("doubleClickLastTime");
+
+      let clickCount = 0;
+      let lastClickTime = 0;
+      let timeBetweenClicks = 0;
+      let locked = false;
+      let retryTimer;
+
+      function updateDetails(clickType, timeDiff) {
+        type.textContent = clickType;
+        count.textContent = String(clickCount);
+        diff.textContent = `${timeDiff} ms`;
+        lastTime.textContent = new Date().toLocaleTimeString();
+      }
+
+      target.addEventListener("click", () => {
+        if (locked) return;
+
+        const now = Date.now();
+        timeBetweenClicks = lastClickTime ? now - lastClickTime : 0;
+        clickCount += 1;
+        lastClickTime = now;
+
+        target.dataset.state = "single";
+        target.textContent = "Single click";
+        updateDetails("Single click", timeBetweenClicks);
+
+        window.clearTimeout(retryTimer);
+        retryTimer = window.setTimeout(() => {
+          if (!locked) retry.hidden = false;
+        }, 350);
+      });
+
+      target.addEventListener("dblclick", () => {
+        if (locked) return;
+
+        window.clearTimeout(retryTimer);
+        target.dataset.state = "double";
+        target.textContent = "Double click detected!";
+        updateDetails("Double click", timeBetweenClicks);
+        locked = true;
+        retry.hidden = false;
+      });
+
+      retry.addEventListener("click", () => {
+        window.clearTimeout(retryTimer);
+        clickCount = 0;
+        lastClickTime = 0;
+        timeBetweenClicks = 0;
+        locked = false;
+        target.dataset.state = "waiting";
+        target.textContent = "Waiting for click";
+        type.textContent = "None";
+        count.textContent = "0";
+        diff.textContent = "0 ms";
+        lastTime.textContent = "—";
+        retry.hidden = true;
+        target.focus();
+      });
+    })();
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
