@@ -48,11 +48,18 @@ Then visit http://localhost:8000.
 
 ## Contributing
 
-Bug reports, content corrections, and focused improvements are welcome. Please keep changes lightweight, accessible, responsive, and consistent with the existing static-site structure.
+See [CONTRIBUTING.md](docs/CONTRIBUTING.md) for contribution guidelines. Bug reports, content
+corrections, and focused improvements are welcome. Please keep changes lightweight, accessible,
+responsive, and consistent with the existing static-site structure.
 
 ## Security
 
 Please review [SECURITY.md](SECURITY.md) before reporting a vulnerability.
+
+## Accessibility
+
+Read the [accessibility statement](docs/ACCESSIBILITY.md) for supported environments, known
+limitations, and how to report barriers.
 
 ## License
 
