@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="assets/icons/favicon.png" type="image/png" />
+  <title>Page Not Found — ProMouser</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="announcement-bar" id="announcementBar">
+    <span>CPS Test Update: <strong>v2.0</strong> is now live —</span>
+    <a href="tests.html">Try it now</a>
+    <button class="close-banner" id="closeBanner" aria-label="Close">✕</button>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/icons/favicon.png" alt="ProMouser logo" class="logo-icon">
+        ProMouser
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li class="has-dropdown">
+          <a href="index.html">Home <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="mouse-ai.html">Recommendation Assistant</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="image-gen.html">Image Generation <span class="badge">New</span></a></li>
+            <li><a href="elite.html">ProMouser Elite</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="mice.html">Mice <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="hand-grip.html">Hand Grip</a></li>
+            <li class="has-dropdown-nested">
+              <a href="mouse-tips.html">Mouse Tips <span class="chevron">▸</span></a>
+              <ul class="dropdown-nested">
+                <li><a href="minecraft-tips.html">Minecraft Tips</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="tests.html">Tests <span class="chevron">▾</span></a>
+          <ul class="dropdown">
+            <li><a href="cps-test.html">CPS Test</a></li>
+            <li><a href="double-click-test.html">Double Click Test</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="nav-search-btn" id="navSearchBtn" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="search" placeholder="Search ProMouser…" id="searchInput" autocomplete="off" />
+        <button id="closeSearch" aria-label="Close search">✕</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero" aria-labelledby="errorTitle">
+      <div class="hero-bg-grid"></div>
+      <div class="hero-noise"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          Looks like a missed click
+        </div>
+        <h1 class="hero-title" id="errorTitle">
+          <span class="line line-1 accent">404</span>
+          <span class="line line-2">Mouse not</span>
+          <span class="line line-3">found.</span>
+        </h1>
+        <p class="hero-sub">This page seems to have wandered off the mousepad. Let’s get you back to something useful.</p>
+        <div class="hero-cta">
+          <a href="index.html" class="btn btn-primary">Back to home</a>
+          <a href="mice.html" class="btn btn-ghost">Browse mice</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="mouse-3d">
+          <div class="mouse-body">
+            <div class="mouse-scroll"></div>
+            <div class="mouse-left-btn"></div>
+            <div class="mouse-right-btn"></div>
+            <div class="mouse-glow"></div>
+          </div>
+          <div class="mouse-shadow"></div>
+        </div>
+        <div class="floating-tag tag-1">Lost signal</div>
+        <div class="floating-tag tag-2">404</div>
+        <div class="floating-tag tag-3">Reconnect</div>
+      </div>
+    </section>
+
+    <section class="quick-links" aria-labelledby="helpfulLinksTitle">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Get back on track</span>
+          <h2 id="helpfulLinksTitle">Where would you like to go?</h2>
+        </div>
+        <div class="ql-grid reveal">
+          <a href="mice.html" class="ql-card">
+            <div class="ql-icon" data-icon="Mouse"></div>
+            <div class="ql-text">
+              <h3>Browse mice</h3>
+              <p>Find a mouse for your setup and play style</p>
+            </div>
+            <span class="ql-arrow">→</span>
+          </a>
+          <a href="mouse-ai.html" class="ql-card">
+            <div class="ql-icon" data-icon="AI"></div>
+            <div class="ql-text">
+              <h3>Recommendation assistant</h3>
+              <p>Get a personalized mouse recommendation</p>
+            </div>
+            <span class="ql-arrow">→</span>
+          </a>
+          <a href="cps-test.html" class="ql-card">
+            <div class="ql-icon" data-icon="Speed"></div>
+            <div class="ql-text">
+              <h3>CPS test</h3>
+              <p>Test your clicks per second</p>
+            </div>
+            <span class="ql-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/icons/favicon.png" alt="ProMouser logo" class="logo-icon">
+        <strong>ProMouser</strong>
+        <p>The mouse guide built for gamers, by gamers.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Explore</h5>
+          <a href="mice.html">Browse Mice</a>
+          <a href="hand-grip.html">Hand Grip</a>
+          <a href="mouse-tips.html">Mouse Tips</a>
+          <a href="minecraft-tips.html">Minecraft Tips</a>
+        </div>
+        <div class="footer-col">
+          <h5>Tools</h5>
+          <a href="cps-test.html">CPS Test</a>
+          <a href="double-click-test.html">Double Click Test</a>
+          <a href="mouse-ai.html">Recommendation Assistant</a>
+          <a href="image-gen.html">Image Generator</a>
+        </div>
+        <div class="footer-col">
+          <h5>About</h5>
+          <a href="about.html">About Us</a>
+          <a href="elite.html">ProMouser Elite</a>
+          <a href="https://www.youtube.com/@ProMouser" target="_blank" rel="noopener noreferrer">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>ProMouser</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
