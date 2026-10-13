@@ -76,11 +76,11 @@
 
 
   <main>
-    <section class="about-section" id="assistant">
+    <section class="about-section assistant-page" id="assistant">
       <div class="container assistant-shell reveal">
         <div class="assistant-header">
-          <span class="section-label">ProMouser AI</span>
-          <h2>Mouse recommendation chat</h2>
+          <span class="section-label">Recommendation Assistant</span>
+          <h2>Find your mouse match</h2>
           <p>Ask questions, compare mice, and get answers grounded in the ProMouser review pages.</p>
         </div>
 
@@ -328,7 +328,6 @@
         if (hasAny(lower, ['sensor', 'dpi', 'polling', 'hz', 'latency', 'input delay'])) return 'performance';
         if (hasAny(lower, ['what is grip', 'which grip', 'explain grip', 'how do i hold', 'hand position', 'identify my grip'])) return 'grip';
         if (hasAny(lower, ['recommend', 'suggest', 'best mouse', 'which mouse', 'buy', 'choose', 'need a mouse', 'looking for'])) return 'recommend';
-        if (hasAny(lower, ['grip', 'palm grip', 'claw grip', 'fingertip'])) return 'grip';
         return 'recommend';
       }
 

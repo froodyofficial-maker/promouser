@@ -794,49 +794,6 @@
 })();
 
 
-/* ── IFRAME LOAD INDICATOR ── */
-(function () {
-  const iframe = document.querySelector('.ai-embed-wrapper iframe');
-  const wrapper = document.querySelector('.ai-embed-wrapper');
-  if (!iframe || !wrapper) return;
-
-  const loader = document.createElement('div');
-  loader.style.cssText = `
-    position: absolute;
-    inset: 56px 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--bg-3);
-    color: var(--text-3);
-    font-size: 14px;
-    gap: 10px;
-    z-index: 2;
-  `;
-  loader.innerHTML = `
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-         style="animation: spin 1s linear infinite">
-      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/>
-    </svg>
-    Loading Mouse AI…
-  `;
-  if (!document.getElementById('spin-style')) {
-    const style = document.createElement('style');
-    style.id = 'spin-style';
-    style.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
-    document.head.appendChild(style);
-  }
-  wrapper.style.position = 'relative';
-  wrapper.appendChild(loader);
-
-  iframe.addEventListener('load', () => {
-    loader.style.transition = 'opacity 0.4s';
-    loader.style.opacity = '0';
-    setTimeout(() => loader.remove(), 400);
-  });
-})();
-
-
 /* ── KEYBOARD NAVIGATION ── */
 document.addEventListener('keydown', e => {
   if (e.key === 'Tab') {
