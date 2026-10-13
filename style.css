@@ -259,3 +259,32 @@
     margin-top:26px;
   }
 }
+
+.skip-link {
+  position:fixed;
+  top:16px;
+  left:16px;
+  z-index:10001;
+  padding:10px 14px;
+  transform:translateY(calc(-100% - 20px));
+  border-radius:8px;
+  background:var(--accent);
+  color:#000;
+  font-weight:700;
+}
+
+.skip-link:focus {
+  transform:translateY(0);
+}
+
+:focus-visible {
+  outline:3px solid var(--accent);
+  outline-offset:3px;
+}
+
+.has-dropdown-nested:hover .dropdown-nested,
+.has-dropdown-nested:focus-within .dropdown-nested {
+  opacity:1;
+  visibility:visible;
+  transform:translateX(0);
+}

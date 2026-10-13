@@ -125,12 +125,57 @@
   hamburger.setAttribute('aria-expanded', 'false');
   hamburger.setAttribute('aria-controls', 'navLinks');
 
+  const dropdownTriggers = navLinks.querySelectorAll('a[aria-controls]');
+  const updateDropdownStates = () => {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    dropdownTriggers.forEach(trigger => {
+      const item = trigger.parentElement;
+      const isExpanded = isMobile
+        ? navLinks.classList.contains('open')
+        : item.matches(':hover') || item.contains(document.activeElement);
+      trigger.setAttribute('aria-expanded', String(isExpanded));
+    });
+  };
+
+  dropdownTriggers.forEach(trigger => {
+    const item = trigger.parentElement;
+    item.addEventListener('pointerenter', updateDropdownStates);
+    item.addEventListener('pointerleave', updateDropdownStates);
+    item.addEventListener('focusin', updateDropdownStates);
+    item.addEventListener('focusout', () => requestAnimationFrame(updateDropdownStates));
+  });
+  updateDropdownStates();
+
   hamburger.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('open');
     hamburger.classList.toggle('open', isOpen);
     document.body.style.overflow = isOpen ? 'hidden' : '';
     hamburger.setAttribute('aria-expanded', isOpen);
+    updateDropdownStates();
   });
+
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || !navLinks.classList.contains('open')) return;
+
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.focus();
+    updateDropdownStates();
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth <= 768 || !navLinks.classList.contains('open')) return;
+
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+    hamburger.setAttribute('aria-expanded', 'false');
+    updateDropdownStates();
+  });
+
+  window.addEventListener('resize', updateDropdownStates);
 
   // Close on nav link click (mobile)
   navLinks.querySelectorAll('a').forEach(link => {
@@ -139,6 +184,7 @@
       hamburger.classList.remove('open');
       document.body.style.overflow = '';
       hamburger.setAttribute('aria-expanded', 'false');
+      updateDropdownStates();
     });
   });
 })();
@@ -330,6 +376,10 @@
       const offset = 80;
       const top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
+      if (this.classList.contains('skip-link')) {
+        target.focus({ preventScroll: true });
+        history.replaceState(null, '', `#${id}`);
+      }
     });
   });
 })();
@@ -742,7 +792,8 @@
     if (!url || url.startsWith('mailto:') || url.startsWith('tel:') || url.startsWith('#') || url.startsWith('javascript:')) return false;
     try {
       const target = new URL(url, location.href);
-      return target.origin === location.origin;
+      return target.origin === location.origin
+        && !(target.pathname === location.pathname && target.search === location.search && target.hash);
     } catch { return false; }
   };
 
