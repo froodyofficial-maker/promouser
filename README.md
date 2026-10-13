@@ -43,8 +43,15 @@ Then visit http://localhost:8000.
 
 - Root HTML files contain the main pages and tools.
 - `mice/` contains individual mouse guides and comparisons.
-- `assets/` contains images and icons.
+- `blog/` contains mouse advice articles.
+- `assets/images/` and `assets/icons/` contain optimized images, branding, favicons, and app icons.
+- `robots.txt` and `sitemap.xml` provide basic search engine discovery.
+- `manifest.webmanifest` describes the site when added to a supported device home screen.
+- `contact.html`, `privacy.html`, and `terms.html` provide contact options and site policies.
 - `script.js` and `style.css` provide shared behavior and styling.
+
+The site is static and does not currently use a server-side contact form, account system, or
+offline service worker. The contact page links to the project's public feedback channels.
 
 ## Contributing
 
